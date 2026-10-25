@@ -1,0 +1,385 @@
+{
+  "method": "DDP",
+  "solver_variant": "interpolated_continuation",
+  "information_set": "complete_realized_future_inflow_offline_upper_bound_only",
+  "months": 4800,
+  "grid_step_m": 1.0,
+  "state_grid_shape": [
+    75,
+    48
+  ],
+  "joint_action_count": 3600,
+  "objective_gwh": 17791736.38940918,
+  "total_generation_gwh": 18153736.38940918,
+  "total_xiaowan_deficit_energy_gwh": 232195.34463032038,
+  "total_nuozhadu_deficit_energy_gwh": 887991.4365532096,
+  "total_penalty_energy_gwh": 362000.0,
+  "total_failed_station_months": 724,
+  "xiaowan_failed_months": 179,
+  "nuozhadu_failed_months": 545,
+  "total_failure_penalty_gwh": 362000.0,
+  "firm_power_failure_penalty_gwh": 500.0,
+  "objective_definition": "generation_energy_gwh_minus_gwh_equivalent_penalty_per_failed_station_month",
+  "checkpoint_file": "/home/xuehua/Platform-for-cascade-hydropower-reservoir-operation-ISO-V6-002654/outputs/DDP/teachers/failure_penalty_500/checkpoints/ddp_p4_v1_train_400y_1m_interpolated_failure_count_v1.checkpoint.npz",
+  "checkpoint_every_months": 100,
+  "checkpoint_solver_variant": "interpolated_continuation_vectorized_failure_count_v1",
+  "resumed_from_checkpoint": false,
+  "resumed_completed_months": 0,
+  "storage_continuity": {
+    "external_natural_inflow_volume_m3": 20493794583801.4,
+    "reservoir_1": {
+      "interval_count": 4799,
+      "positive_jump_count": 0,
+      "negative_jump_count": 0,
+      "zero_jump_count": 4799,
+      "cumulative_positive_storage_jump_m3": 0.0,
+      "cumulative_negative_storage_jump_m3": 0.0,
+      "cumulative_absolute_storage_jump_m3": 0.0,
+      "net_storage_jump_m3": 0.0,
+      "max_abs_storage_jump_m3": 0.0,
+      "cumulative_positive_jump_to_external_inflow_ratio": 0.0,
+      "cumulative_negative_jump_to_external_inflow_ratio": 0.0,
+      "cumulative_absolute_jump_to_external_inflow_ratio": 0.0,
+      "net_jump_to_external_inflow_ratio": 0.0
+    },
+    "reservoir_2": {
+      "interval_count": 4799,
+      "positive_jump_count": 0,
+      "negative_jump_count": 0,
+      "zero_jump_count": 4799,
+      "cumulative_positive_storage_jump_m3": 0.0,
+      "cumulative_negative_storage_jump_m3": 0.0,
+      "cumulative_absolute_storage_jump_m3": 0.0,
+      "net_storage_jump_m3": 0.0,
+      "max_abs_storage_jump_m3": 0.0,
+      "cumulative_positive_jump_to_external_inflow_ratio": 0.0,
+      "cumulative_negative_jump_to_external_inflow_ratio": 0.0,
+      "cumulative_absolute_jump_to_external_inflow_ratio": 0.0,
+      "net_jump_to_external_inflow_ratio": 0.0
+    },
+    "cascade_total": {
+      "interval_count": 4799,
+      "positive_jump_count": 0,
+      "negative_jump_count": 0,
+      "zero_jump_count": 4799,
+      "cumulative_positive_storage_jump_m3": 0.0,
+      "cumulative_negative_storage_jump_m3": 0.0,
+      "cumulative_absolute_storage_jump_m3": 0.0,
+      "net_storage_jump_m3": 0.0,
+      "max_abs_storage_jump_m3": 0.0,
+      "cumulative_positive_jump_to_external_inflow_ratio": 0.0,
+      "cumulative_negative_jump_to_external_inflow_ratio": 0.0,
+      "cumulative_absolute_jump_to_external_inflow_ratio": 0.0,
+      "net_jump_to_external_inflow_ratio": 0.0
+    }
+  },
+  "initial_levels_m": [
+    1240.0,
+    812.0
+  ],
+  "terminal_levels_m": [
+    1240.0,
+    812.0
+  ],
+  "terminal_constraint": "hard_final_end_state",
+  "final_level_1_m": 1240.0,
+  "final_level_2_m": 812.0,
+  "terminal_error_1_m": 0.0,
+  "terminal_error_2_m": 0.0,
+  "monthly_max_target_levels_m": {
+    "xiaowan": [
+      1240.0,
+      1240.0,
+      1240.0,
+      1240.0,
+      1236.0,
+      1236.0,
+      1236.0,
+      1236.0,
+      1236.0,
+      1236.0,
+      1240.0,
+      1240.0
+    ],
+    "nuozhadu": [
+      812.0,
+      812.0,
+      812.0,
+      812.0,
+      804.0,
+      804.0,
+      804.0,
+      804.0,
+      804.0,
+      804.0,
+      812.0,
+      812.0
+    ]
+  },
+  "monthly_max_semantics": "applies_to_end_of_month_target_level",
+  "configuration": "xiaowan_nuozhadu_v1.yaml",
+  "inflow_split": "train_400y",
+  "inflow_source": "data/xiaowan_nuozhadu/inflow/target_synthetic_monthly_dual_v1_20260903/joint/inflow_joint_monthly_train.csv",
+  "ddp_constraints": {
+    "action_grid_step_m": 1.0,
+    "solver_variant": "interpolated_continuation",
+    "initial_levels_m": [
+      1240.0,
+      812.0
+    ],
+    "terminal_levels_m": [
+      1240.0,
+      812.0
+    ],
+    "terminal_constraint_type": "hard",
+    "terminal_scope": "final_end_state_of_continuous_4800_month_horizon",
+    "flood_season_months": [
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "flood_limit_action_months": [
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "monthly_max_target_levels_m": {
+      "xiaowan": [
+        1240.0,
+        1240.0,
+        1240.0,
+        1240.0,
+        1236.0,
+        1236.0,
+        1236.0,
+        1236.0,
+        1236.0,
+        1236.0,
+        1240.0,
+        1240.0
+      ],
+      "nuozhadu": [
+        812.0,
+        812.0,
+        812.0,
+        812.0,
+        804.0,
+        804.0,
+        804.0,
+        804.0,
+        804.0,
+        804.0,
+        812.0,
+        812.0
+      ]
+    },
+    "monthly_max_semantics": "applies_to_end_of_month_target_level",
+    "unreachable_target_policy": "infeasible_action_without_clipping"
+  },
+  "reward_configuration": {
+    "firm_power_failure_penalty_gwh": 500.0,
+    "failure_definition": "station_specific_monthly_power_below_firm_power",
+    "objective": "generation_gwh_minus_penalty_gwh_per_failed_station_month",
+    "deficit_energy_role": "diagnostic_only_not_in_ddp_objective",
+    "status": "configured_failure_count_penalty_recorded_in_every_ddp_output"
+  },
+  "physical_parameters": {
+    "xiaowan": {
+      "normal_level_m": 1240.0,
+      "flood_limit_level_m": 1236.0,
+      "max_turbine_discharge_m3s": 2340.0,
+      "max_power_kw": 4200000.0,
+      "firm_power_kw": 1854000.0,
+      "max_total_release_m3s": 20683.0
+    },
+    "nuozhadu": {
+      "normal_level_m": 812.0,
+      "flood_limit_level_m": 804.0,
+      "max_turbine_discharge_m3s": 3537.0,
+      "max_power_kw": 5850000.0,
+      "firm_power_kw": 2406000.0,
+      "max_total_release_m3s": null
+    }
+  },
+  "trajectory_diagnostics": {
+    "mean_annual_generation_gwh": {
+      "xiaowan": 20956.9933927683,
+      "nuozhadu": 24427.347580754653,
+      "cascade": 45384.34097352295
+    },
+    "monthly_means": {
+      "1": {
+        "xiaowan_mean_end_level_m": 1224.89,
+        "nuozhadu_mean_end_level_m": 809.7675,
+        "xiaowan_mean_inflow_m3s": 426.74193548387007,
+        "nuozhadu_mean_local_inflow_m3s": 124.8387096774205,
+        "nuozhadu_mean_effective_inflow_m3s": 970.5256309737157,
+        "xiaowan_mean_turbine_discharge_m3s": 845.6869212962953,
+        "nuozhadu_mean_turbine_discharge_m3s": 993.9427830047792,
+        "xiaowan_mean_spill_discharge_m3s": 0.0,
+        "nuozhadu_mean_spill_discharge_m3s": 0.0
+      },
+      "2": {
+        "xiaowan_mean_end_level_m": 1215.2725,
+        "nuozhadu_mean_end_level_m": 807.5125,
+        "xiaowan_mean_inflow_m3s": 392.7419354838697,
+        "nuozhadu_mean_local_inflow_m3s": 114.00000000000026,
+        "nuozhadu_mean_effective_inflow_m3s": 1120.663241045127,
+        "xiaowan_mean_turbine_discharge_m3s": 1006.6632410451269,
+        "nuozhadu_mean_turbine_discharge_m3s": 1396.7636938879023,
+        "xiaowan_mean_spill_discharge_m3s": 0.0,
+        "nuozhadu_mean_spill_discharge_m3s": 0.0
+      },
+      "3": {
+        "xiaowan_mean_end_level_m": 1204.3575,
+        "nuozhadu_mean_end_level_m": 805.1475,
+        "xiaowan_mean_inflow_m3s": 442.19354838709677,
+        "nuozhadu_mean_local_inflow_m3s": 127.32258064516199,
+        "nuozhadu_mean_effective_inflow_m3s": 1141.4931488948632,
+        "xiaowan_mean_turbine_discharge_m3s": 1014.1705682497013,
+        "nuozhadu_mean_turbine_discharge_m3s": 1398.794709528077,
+        "xiaowan_mean_spill_discharge_m3s": 0.0,
+        "nuozhadu_mean_spill_discharge_m3s": 0.0
+      },
+      "4": {
+        "xiaowan_mean_end_level_m": 1196.1375,
+        "nuozhadu_mean_end_level_m": 803.175,
+        "xiaowan_mean_inflow_m3s": 622.6774193548375,
+        "nuozhadu_mean_local_inflow_m3s": 180.22580645161253,
+        "nuozhadu_mean_effective_inflow_m3s": 1209.243214232376,
+        "xiaowan_mean_turbine_discharge_m3s": 1029.0174077807635,
+        "nuozhadu_mean_turbine_discharge_m3s": 1428.0151085224993,
+        "xiaowan_mean_spill_discharge_m3s": 0.0,
+        "nuozhadu_mean_spill_discharge_m3s": 0.0
+      },
+      "5": {
+        "xiaowan_mean_end_level_m": 1193.2025,
+        "nuozhadu_mean_end_level_m": 802.0725,
+        "xiaowan_mean_inflow_m3s": 971.8064516129027,
+        "nuozhadu_mean_local_inflow_m3s": 281.45161290322625,
+        "nuozhadu_mean_effective_inflow_m3s": 1372.7041890681003,
+        "xiaowan_mean_turbine_discharge_m3s": 1091.2525761648742,
+        "nuozhadu_mean_turbine_discharge_m3s": 1489.4126717443248,
+        "xiaowan_mean_spill_discharge_m3s": 0.0,
+        "nuozhadu_mean_spill_discharge_m3s": 0.0
+      },
+      "6": {
+        "xiaowan_mean_end_level_m": 1200.815,
+        "nuozhadu_mean_end_level_m": 802.73,
+        "xiaowan_mean_inflow_m3s": 1648.0645161290322,
+        "nuozhadu_mean_local_inflow_m3s": 482.5483870967728,
+        "nuozhadu_mean_effective_inflow_m3s": 1746.7481269912369,
+        "xiaowan_mean_turbine_discharge_m3s": 1264.1491857803494,
+        "nuozhadu_mean_turbine_discharge_m3s": 1674.306190262842,
+        "xiaowan_mean_spill_discharge_m3s": 0.050554114114546564,
+        "nuozhadu_mean_spill_discharge_m3s": 0.0
+      },
+      "7": {
+        "xiaowan_mean_end_level_m": 1216.6925,
+        "nuozhadu_mean_end_level_m": 803.4875,
+        "xiaowan_mean_inflow_m3s": 2449.000000000002,
+        "nuozhadu_mean_local_inflow_m3s": 720.1290322580619,
+        "nuozhadu_mean_effective_inflow_m3s": 2327.6482974910386,
+        "xiaowan_mean_turbine_discharge_m3s": 1604.8704091338254,
+        "nuozhadu_mean_turbine_discharge_m3s": 2246.0701012053833,
+        "xiaowan_mean_spill_discharge_m3s": 2.6488560991511236,
+        "nuozhadu_mean_spill_discharge_m3s": 0.05545883045819437
+      },
+      "8": {
+        "xiaowan_mean_end_level_m": 1228.175,
+        "nuozhadu_mean_end_level_m": 803.84,
+        "xiaowan_mean_inflow_m3s": 2530.677419354838,
+        "nuozhadu_mean_local_inflow_m3s": 745.0000000000007,
+        "nuozhadu_mean_effective_inflow_m3s": 2634.439460125448,
+        "xiaowan_mean_turbine_discharge_m3s": 1864.9819794212144,
+        "nuozhadu_mean_turbine_discharge_m3s": 2599.9098772637085,
+        "xiaowan_mean_spill_discharge_m3s": 24.45748070423273,
+        "nuozhadu_mean_spill_discharge_m3s": 0.1714772763153735
+      },
+      "9": {
+        "xiaowan_mean_end_level_m": 1235.14,
+        "nuozhadu_mean_end_level_m": 803.975,
+        "xiaowan_mean_inflow_m3s": 2409.8709677419383,
+        "nuozhadu_mean_local_inflow_m3s": 711.0322580645136,
+        "nuozhadu_mean_effective_inflow_m3s": 2665.232411763242,
+        "xiaowan_mean_turbine_discharge_m3s": 1924.5800659370043,
+        "nuozhadu_mean_turbine_discharge_m3s": 2649.9516376838255,
+        "xiaowan_mean_spill_discharge_m3s": 29.62008776172417,
+        "nuozhadu_mean_spill_discharge_m3s": 0.27517994361367754
+      },
+      "10": {
+        "xiaowan_mean_end_level_m": 1235.9225,
+        "nuozhadu_mean_end_level_m": 803.8575,
+        "xiaowan_mean_inflow_m3s": 1673.0000000000007,
+        "nuozhadu_mean_local_inflow_m3s": 490.3870967741903,
+        "nuozhadu_mean_effective_inflow_m3s": 2112.0359169653493,
+        "xiaowan_mean_turbine_discharge_m3s": 1606.293851471218,
+        "nuozhadu_mean_turbine_discharge_m3s": 2124.2311048856477,
+        "xiaowan_mean_spill_discharge_m3s": 15.354968719941454,
+        "nuozhadu_mean_spill_discharge_m3s": 0.5796029996541858
+      },
+      "11": {
+        "xiaowan_mean_end_level_m": 1234.96,
+        "nuozhadu_mean_end_level_m": 806.725,
+        "xiaowan_mean_inflow_m3s": 876.1612903225771,
+        "nuozhadu_mean_local_inflow_m3s": 259.451612903226,
+        "nuozhadu_mean_effective_inflow_m3s": 1202.328952608519,
+        "xiaowan_mean_turbine_discharge_m3s": 942.8773397052931,
+        "nuozhadu_mean_turbine_discharge_m3s": 868.3287597072846,
+        "xiaowan_mean_spill_discharge_m3s": 0.0,
+        "nuozhadu_mean_spill_discharge_m3s": 0.0
+      },
+      "12": {
+        "xiaowan_mean_end_level_m": 1231.6025,
+        "nuozhadu_mean_end_level_m": 809.925,
+        "xiaowan_mean_inflow_m3s": 562.8387096774172,
+        "nuozhadu_mean_local_inflow_m3s": 163.6451612903225,
+        "nuozhadu_mean_effective_inflow_m3s": 945.5081018518497,
+        "xiaowan_mean_turbine_discharge_m3s": 781.8629405615272,
+        "nuozhadu_mean_turbine_discharge_m3s": 595.8625112007148,
+        "xiaowan_mean_spill_discharge_m3s": 0.0,
+        "nuozhadu_mean_spill_discharge_m3s": 0.0
+      }
+    },
+    "spill_month_fraction": {
+      "xiaowan": 0.057291666666666664,
+      "nuozhadu": 0.005
+    },
+    "maximum_turbine_discharge_month_fraction": {
+      "xiaowan": 0.013333333333333334,
+      "nuozhadu": 0.0022916666666666667
+    },
+    "monthly_max_level_month_fraction": {
+      "xiaowan": 0.191875,
+      "nuozhadu": 0.4714583333333333
+    },
+    "flood_limit_exceedance_count": {
+      "xiaowan": 0,
+      "nuozhadu": 0
+    },
+    "target_unreached_count": {
+      "xiaowan": 0,
+      "nuozhadu": 0
+    },
+    "max_abs_water_balance_error_m3": 4.291534423828125e-06,
+    "storage_jump": {
+      "xiaowan_max_abs_m3": 0.0,
+      "nuozhadu_max_abs_m3": 0.0,
+      "cascade_max_abs_m3": 0.0
+    }
+  },
+  "assumption_register": "docs/audit/uncertain_parameter_register_p4_v1.md",
+  "warning": "DDP uses future inflow and is not a deployable policy.",
+  "configured_grid_step_scenarios_m": [
+    0.5,
+    1.0,
+    2.0,
+    5.0
+  ],
+  "max_abs_water_balance_error_m3": 4.291534423828125e-06
+}

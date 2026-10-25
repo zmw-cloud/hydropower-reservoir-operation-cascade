@@ -1,0 +1,35 @@
+{
+  "experiment_contract": {
+    "workflow_version": "xiaowan_iso_rf_validation_v1",
+    "objective_version": "single_violation_count_v1",
+    "penalty_definition": "generation_gwh_minus_lambda_per_failed_reservoir_month",
+    "penalty_unit": "GWh_per_failed_reservoir_month",
+    "strict_failure_comparison": "power_kw < firm_power_kw",
+    "train_workbook_hash": "6a008721c43dc118789444ce20b47ccba258dec27b2331ebec28593238b81885",
+    "development_train_content_hash": "84afa8ed75a19fbdd32c58415d2c11c605b115a9e0da05ae81942941cd698e87",
+    "validation_content_hash": "c7b0f3fcb51f1048eae26b50b910cdd3e849b7eba960c211917a75508dd94690",
+    "physics_hash": "31c01702e76a611f41621fdbd0352b9cc83ce1906eac4d27a2326c65341a487e",
+    "implementation_hash": "5c064b0322eb46cdd3d1d6c78c7b640a76a47c14ae0da2a92ed04ac4667e551e",
+    "development_years": 320,
+    "validation_years": 80,
+    "initial_level_m": 1240.0,
+    "teacher_terminal_level_m": 1240.0
+  },
+  "selection_stage": "lambda_on_validation",
+  "selection_data": "held_out_last_80_training_years",
+  "selection_rule": "nearest_guarantee_target_then_higher_generation_then_lower_lambda",
+  "target_guarantee_rate": 0.8,
+  "lambda": 700.0,
+  "hyperparameters": {
+    "max_depth": null,
+    "max_features": 1.0,
+    "min_samples_leaf": 1,
+    "n_estimators": 200
+  },
+  "random_seed": 20260918,
+  "anchor_lambda": 1200.0,
+  "validation_guarantee_rate": 0.7958333333333333,
+  "validation_mean_annual_generation_gwh": 20212.05021239013,
+  "validation_scan_hash": "3cee1ea4f2be9a37ab37bb3380700eb84d06634d95f1c5b280a989a31e023b0d",
+  "hyperparameter_selection_hash": "6f4f2a2536e9e358ea3281c1761015ef10f6ff47cbf1ef3398c6395df16bcbc4"
+}

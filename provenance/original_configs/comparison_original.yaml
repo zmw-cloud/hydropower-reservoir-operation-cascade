@@ -1,0 +1,53 @@
+# Formal evaluation selections; DQN/PPO each use three seeds on identical inflows.
+# The trade-off scan is separate and reads their validation results.
+comparison:
+  name: comparison_ddp_sdp_iso_dqn_ppo_formal
+  output_directory: outputs/comparison_ddp_sdp_iso_dqn_ppo_formal
+  physical_config: configs/xiaowan_nuozhadu_v1.yaml
+  reference_guarantee_rates_pct: [80.0, 90.0]
+  figure_dpi: 600
+
+selected_results:
+  DDP:
+    candidate_id: penalty_200
+    failure_penalty_gwh: 200.0
+    trajectory: outputs/DDP/ddp_failure_penalty_1m_results_20260924/penalty_200/ddp_p4_v1_evaluation_400y_1m_interpolated_failure_count_v1.csv
+    summary: outputs/DDP/ddp_failure_penalty_1m_results_20260924/penalty_200/ddp_p4_v1_evaluation_400y_1m_interpolated_failure_count_v1.json
+  SDP:
+    candidate_id: penalty_400
+    failure_penalty_gwh: 400.0
+    trajectory: outputs/SDP/evaluation/sdp/1m/bilinear_continuation/failure_penalty_400/sdp_p4_v4_one_step_forecast_bilinear_continuation_evaluation_400y_1m_failure_count_penalty_400.csv
+    summary: outputs/SDP/evaluation/sdp/1m/bilinear_continuation/failure_penalty_400/sdp_p4_v4_one_step_forecast_bilinear_continuation_evaluation_400y_1m_failure_count_penalty_400.json
+  ISO:
+    candidate_id: rf41_teacher_penalty_500
+    failure_penalty_gwh: 500.0
+    trajectory: outputs/ISO/完整惩罚系数扫描最终版/iso_fixed_rf41_11penalties_complete_20261006_224932/outputs/ISO_teacher_penalty_sweep/penalty_500/evaluation/normal/iso_schedule.csv
+    summary: outputs/ISO/完整惩罚系数扫描最终版/iso_fixed_rf41_11penalties_complete_20261006_224932/outputs/ISO_teacher_penalty_sweep/penalty_500/evaluation/normal/iso_summary.json
+  DQN:
+    candidate_id: lambda_5000_mean_3seeds
+    failure_penalty_gwh: 5000.0
+    require_formal_evaluation: true
+    archive: outputs/DQN/DQN验证集与正式训练/dqn_lambda5000_formal_3seeds.zip
+    results:
+      - seed: 1
+        trajectory: formal_runs/seed_1/evaluation/baseline/monthly_trajectory.csv
+        summary: formal_runs/seed_1/evaluation/baseline/summary.json
+      - seed: 42
+        trajectory: formal_runs/seed_42/evaluation/baseline/monthly_trajectory.csv
+        summary: formal_runs/seed_42/evaluation/baseline/summary.json
+      - seed: 100
+        trajectory: formal_runs/seed_100/evaluation/baseline/monthly_trajectory.csv
+        summary: formal_runs/seed_100/evaluation/baseline/summary.json
+  PPO:
+    candidate_id: lambda_6000_mean_3seeds
+    failure_penalty_gwh: 6000.0
+    results:
+      - seed: 1
+        trajectory: outputs/PPO/v16_final_lambda6000_full_20261012/outputs/xiaowan_nuozhadu/continuous_ppo_v16_geometry_conditioned_final_lambda6000/experiments/continuous_ppo_v16_geometry_conditioned_final_lambda6000/seed_1/final/evaluation/evaluation_monthly.csv
+        summary: outputs/PPO/v16_final_lambda6000_full_20261012/outputs/xiaowan_nuozhadu/continuous_ppo_v16_geometry_conditioned_final_lambda6000/experiments/continuous_ppo_v16_geometry_conditioned_final_lambda6000/seed_1/final/evaluation/evaluation_monthly.json
+      - seed: 42
+        trajectory: outputs/PPO/v16_final_lambda6000_full_20261012/outputs/xiaowan_nuozhadu/continuous_ppo_v16_geometry_conditioned_final_lambda6000/experiments/continuous_ppo_v16_geometry_conditioned_final_lambda6000/seed_42/final/evaluation/evaluation_monthly.csv
+        summary: outputs/PPO/v16_final_lambda6000_full_20261012/outputs/xiaowan_nuozhadu/continuous_ppo_v16_geometry_conditioned_final_lambda6000/experiments/continuous_ppo_v16_geometry_conditioned_final_lambda6000/seed_42/final/evaluation/evaluation_monthly.json
+      - seed: 100
+        trajectory: outputs/PPO/v16_final_lambda6000_full_20261012/outputs/xiaowan_nuozhadu/continuous_ppo_v16_geometry_conditioned_final_lambda6000/experiments/continuous_ppo_v16_geometry_conditioned_final_lambda6000/seed_100/final/evaluation/evaluation_monthly.csv
+        summary: outputs/PPO/v16_final_lambda6000_full_20261012/outputs/xiaowan_nuozhadu/continuous_ppo_v16_geometry_conditioned_final_lambda6000/experiments/continuous_ppo_v16_geometry_conditioned_final_lambda6000/seed_100/final/evaluation/evaluation_monthly.json

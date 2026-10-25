@@ -1,0 +1,51 @@
+comparison:
+  name: comparison_ddp_sdp_iso_dqn_ppo_formal
+  output_directory: outputs/comparison
+  physical_config: configs/xiaowan_nuozhadu_v1.yaml
+  reference_guarantee_rates_pct:
+  - 80.0
+  - 90.0
+  figure_dpi: 600
+selected_results:
+  DDP:
+    candidate_id: penalty_200
+    failure_penalty_gwh: 200.0
+    trajectory: reference_results/cascade/inputs/495fc3d9633e/ddp_p4_v1_evaluation_400y_1m_interpolated_failure_count_v1.csv
+    summary: reference_results/cascade/inputs/52e8b56da7f0/ddp_p4_v1_evaluation_400y_1m_interpolated_failure_count_v1.json
+  SDP:
+    candidate_id: penalty_400
+    failure_penalty_gwh: 400.0
+    trajectory: reference_results/cascade/inputs/54334d1c3cff/sdp_p4_v4_one_step_forecast_bilinear_continuation_evaluation_400y_1m_failure_count_penalty_400.csv
+    summary: reference_results/cascade/inputs/629a7a5d6cc2/sdp_p4_v4_one_step_forecast_bilinear_continuation_evaluation_400y_1m_failure_count_penalty_400.json
+  ISO:
+    candidate_id: rf41_teacher_penalty_500
+    failure_penalty_gwh: 500.0
+    trajectory: reference_results/cascade/inputs/a74286bd39b2/iso_schedule.csv
+    summary: reference_results/cascade/inputs/12f20cccab36/iso_summary.json
+  DQN:
+    candidate_id: lambda_5000_mean_3seeds
+    failure_penalty_gwh: 5000.0
+    require_formal_evaluation: true
+    results:
+    - seed: 1
+      trajectory: reference_results/cascade/inputs/521df6dde5d4/seed_1/monthly_trajectory.csv
+      summary: reference_results/cascade/inputs/542a6439a33b/seed_1/summary.json
+    - seed: 42
+      trajectory: reference_results/cascade/inputs/521df6dde5d4/seed_42/monthly_trajectory.csv
+      summary: reference_results/cascade/inputs/542a6439a33b/seed_42/summary.json
+    - seed: 100
+      trajectory: reference_results/cascade/inputs/521df6dde5d4/seed_100/monthly_trajectory.csv
+      summary: reference_results/cascade/inputs/542a6439a33b/seed_100/summary.json
+  PPO:
+    candidate_id: lambda_6000_mean_3seeds
+    failure_penalty_gwh: 6000.0
+    results:
+    - seed: 1
+      trajectory: reference_results/cascade/inputs/5a88d3060481/seed_1/evaluation_monthly.csv
+      summary: reference_results/cascade/inputs/ebf3b4acfa16/seed_1/evaluation_monthly.json
+    - seed: 42
+      trajectory: reference_results/cascade/inputs/5a88d3060481/seed_42/evaluation_monthly.csv
+      summary: reference_results/cascade/inputs/ebf3b4acfa16/seed_42/evaluation_monthly.json
+    - seed: 100
+      trajectory: reference_results/cascade/inputs/5a88d3060481/seed_100/evaluation_monthly.csv
+      summary: reference_results/cascade/inputs/ebf3b4acfa16/seed_100/evaluation_monthly.json

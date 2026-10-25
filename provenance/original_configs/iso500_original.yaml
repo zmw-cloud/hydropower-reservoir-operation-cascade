@@ -1,0 +1,59 @@
+experiment:
+  name: xiaowan_nuozhadu_iso_fixed_rf41_teacher_lambda500
+  information_structure: one_step_perfect_forecast
+physics_config_path: configs/xiaowan_nuozhadu_v1.yaml
+teacher:
+  dataset_identifier: ddp_train_400y_1m_interpolated_failure_count_lambda500_v1
+  required_solver_variant: interpolated_continuation
+  required_objective: generation_gwh_minus_penalty_gwh_per_failed_station_month
+  required_failure_penalty_gwh: 500.0
+  required_terminal_constraint: hard_final_end_state
+  required_initial_levels_m:
+  - 1240.0
+  - 812.0
+  required_terminal_levels_m:
+  - 1240.0
+  - 812.0
+  ddp_schedule_path: outputs/DDP/teachers/failure_penalty_500/ddp_p4_v1_train_400y_1m_interpolated_failure_count_v1.csv
+  columns:
+    date: date
+    start_level_1_m: start_level_1_m
+    start_level_2_m: start_level_2_m
+    inflow_1_m3s: inflow_1_m3s
+    inflow_2_local_m3s: inflow_2_local_m3s
+    target_level_1_m: target_level_1_m
+    target_level_2_m: target_level_2_m
+development:
+  fit_years: 320
+  validation_years: 80
+  validation_segment_years: 20
+  resume_completed_candidates: true
+  candidate_model_families:
+  - random_forest
+  polynomial_alpha_candidates: []
+  rbf_candidates: []
+  random_forest_candidates:
+  - n_estimators: 200
+    max_depth: 16
+    min_samples_leaf: 1
+    max_features: 0.5
+  random_forest_candidate_generator:
+    enabled: false
+random_seed: 20260918
+target_unreached_tolerance_m: 1.0e-06
+output_directory: outputs/ISO_teacher_penalty_sweep/penalty_500
+final_selected_config_path: outputs/ISO_teacher_penalty_sweep/penalty_500/development/best_iso_config.json
+final_model_path: outputs/ISO_teacher_penalty_sweep/penalty_500/final/iso_final_policy.pkl
+objective:
+  selection_metric: reliability_target_then_generation
+  selection_direction: hierarchical
+  reliability_target: 0.8
+  reliability_definition: both_station_specific_reliabilities
+  failure_penalty_source: teacher_summary
+  failure_definition: station_specific_monthly_power_below_firm_power
+evaluation:
+  expected_months_per_scenario: 4800
+  scenarios:
+    normal:
+      dataset_identifier: target_synthetic_monthly_dual_v1_20260903_evaluation
+      inflow_path: data/xiaowan_nuozhadu/inflow/target_synthetic_monthly_dual_v1_20260903/joint/inflow_joint_monthly_evaluation.csv

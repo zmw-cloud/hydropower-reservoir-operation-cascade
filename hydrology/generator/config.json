@@ -1,0 +1,38 @@
+{
+  "input_file": "input/interval_inflow.xlsx",
+  "input_sheet": "interval_inflow",
+  "date_column": "date",
+  "station_columns": {
+    "xiaowan": "xiaowan_natural_inflow_m3s",
+    "nuozhadu_interval": "nuozhadu_interval_inflow_m3s"
+  },
+  "synthetic_years": 400,
+  "calendar_start_year": 2009,
+  "output_dir": "../../outputs/hydrology_generated",
+  "regularization": 0.0001,
+  "minimum_calibration_samples": 20000,
+  "calibration_multiplier": 50,
+  "fail_on_qc": true,
+  "correlation_tolerances": {
+    "overall_spatial_abs_error": 0.01,
+    "deseasonalized_spatial_abs_error": 0.04,
+    "monthly_spatial_max_abs_error": 0.1,
+    "log_correlation_rmse": 0.1,
+    "monthly_mean_relative_error": 1e-06,
+    "monthly_sd_relative_error": 1e-06
+  },
+  "scenarios": [
+    {
+      "name": "train",
+      "seed": 2026090301,
+      "mean_change_pct": 0,
+      "sd_change_pct": 0
+    },
+    {
+      "name": "evaluation",
+      "seed": 2026090302,
+      "mean_change_pct": 0,
+      "sd_change_pct": 0
+    }
+  ]
+}

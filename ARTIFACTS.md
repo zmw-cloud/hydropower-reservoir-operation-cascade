@@ -1,0 +1,1 @@
+Frozen models and reference trajectories are part of this local repository. For remote publication, place large binaries in a versioned release or Git LFS, preserving manifests. No historical result is rewritten by this integration.

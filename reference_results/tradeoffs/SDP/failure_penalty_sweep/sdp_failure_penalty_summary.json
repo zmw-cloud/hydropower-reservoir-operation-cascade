@@ -1,0 +1,36 @@
+{
+  "method": "SDP",
+  "water_level_step_m": 1.0,
+  "candidate_count": 11,
+  "completed_count": 11,
+  "candidate_failure_penalties_gwh": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+  ],
+  "completed_failure_penalties_gwh": [
+    0.0,
+    100.0,
+    200.0,
+    300.0,
+    400.0,
+    500.0,
+    600.0,
+    700.0,
+    800.0,
+    900.0,
+    1000.0
+  ],
+  "first_failure_penalty_both_stations_ge_90pct": null,
+  "platform_detection": "not_automated; inspect the reliability curves and adjacent percentage-point changes",
+  "summary_csv": "/home/xuehua/Platform-for-cascade-hydropower-reservoir-operation-6.0.0-SDP/outputs/xiaowan_nuozhadu/evaluation/sdp/1m/bilinear_continuation/failure_penalty_sweep/sdp_failure_penalty_summary.csv",
+  "plot_png": "/home/xuehua/Platform-for-cascade-hydropower-reservoir-operation-6.0.0-SDP/outputs/xiaowan_nuozhadu/evaluation/sdp/1m/bilinear_continuation/failure_penalty_sweep/sdp_failure_penalty.png"
+}

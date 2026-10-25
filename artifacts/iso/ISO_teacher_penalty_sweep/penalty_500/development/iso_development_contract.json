@@ -1,0 +1,18 @@
+{
+  "teacher_sha256": "98904b6cbbb2916614af208569b04f0bcd2825aa7afcb1acb61a4e4f6d08636b",
+  "teacher_summary_sha256": "18e8956465bc15bec9f16cc7ef55c3f22a8894ecd847be78e97a71218284c19a",
+  "physics_config_sha256": "30c87bd37c9ff1c0dde9bd0648149747baaf724cefb0a043c81889e17e77b594",
+  "random_seed": 20260918,
+  "candidate_definitions": [
+    {
+      "candidate_id": "random_forest_01",
+      "model_type": "random_forest",
+      "hyperparameters": {
+        "n_estimators": 200,
+        "max_depth": 16,
+        "min_samples_leaf": 1,
+        "max_features": 0.5
+      }
+    }
+  ]
+}

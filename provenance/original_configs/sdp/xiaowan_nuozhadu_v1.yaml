@@ -1,0 +1,100 @@
+experiment:
+  name: xiaowan_nuozhadu_p4_v1
+  time_scale: monthly
+  observation: [storage_1_1e9m3, storage_2_1e9m3, inflow_1_m3s, inflow_2_local_m3s, month]
+  action: [target_level_1_m, target_level_2_m]
+  deployable_forecast_policy: no_future_inflow
+  ddp_information_set: complete_realized_future_inflow_upper_bound_only
+
+data:
+  raw_inflow_file: data/xiaowan_nuozhadu/raw/1-*.xlsx
+  input_source: target_synthetic_monthly_dual_v1_20260903
+  generator_manifest_file: data/xiaowan_nuozhadu/inflow/target_synthetic_monthly_dual_v1_20260903/generation_manifest.json
+  train_inflow_file: data/xiaowan_nuozhadu/inflow/target_synthetic_monthly_dual_v1_20260903/joint/inflow_joint_monthly_train.csv
+  evaluation_inflow_file: data/xiaowan_nuozhadu/inflow/target_synthetic_monthly_dual_v1_20260903/joint/inflow_joint_monthly_evaluation.csv
+  synthetic_years_per_split: 400
+  expected_months_per_split: 4800
+  train_random_seed: 2026090301
+  evaluation_random_seed: 2026090302
+  downstream_series_interpretation: nuozhadu_interval_natural_inflow
+  local_inflow_status: source_validated_historical_difference_and_joint_synthesis
+  local_inflow_experiment_ready: true
+  note: I2_effective equals Nuozhadu interval natural inflow plus routed XiaoWan total release.
+
+ddp_constraints:
+  action_grid_step_m: 1.0
+  solver_variant: interpolated_continuation
+  initial_levels_m: [1240.0, 812.0]
+  terminal_levels_m: [1240.0, 812.0]
+  terminal_constraint_type: hard
+  terminal_scope: final_end_state_of_continuous_4800_month_horizon
+  flood_season_months: [6, 7, 8, 9, 10]
+  flood_limit_action_months: [5, 6, 7, 8, 9, 10]
+  monthly_max_target_levels_m:
+    xiaowan: [1240.0, 1240.0, 1240.0, 1240.0, 1236.0, 1236.0, 1236.0, 1236.0, 1236.0, 1236.0, 1240.0, 1240.0]
+    nuozhadu: [812.0, 812.0, 812.0, 812.0, 804.0, 804.0, 804.0, 804.0, 804.0, 804.0, 812.0, 812.0]
+  monthly_max_semantics: applies_to_end_of_month_target_level
+  unreachable_target_policy: infeasible_action_without_clipping
+
+routing:
+  mode: zero_delay_direct_transfer
+  first_version_assumption: routed_q1_total_equals_q1_total
+  future_interface: replaceable_router
+
+hydraulics:
+  tailwater_model: quartic_polynomial_extrapolation_with_xiaowan_flood_anchors
+  upstream_backwater_model: independent_tailwater_curve_assumption
+  interpolation: fourth_order_polynomial_fit
+  out_of_range_policy: polynomial_extrapolation
+  infeasible_target_policy: clip_level_then_enforce_nonnegative_release
+
+reservoirs:
+  xiaowan:
+    curve_dir: data/xiaowan_nuozhadu/reservoir_1
+    dead_level_m: 1166.0
+    normal_level_m: 1240.0
+    flood_limit_level_m: 1236.0
+    initial_level_m: 1240.0
+    max_turbine_discharge_m3s: 2340.0
+    max_power_kw: 4200000.0
+    firm_power_kw: 1854000.0
+    power_coefficient_kw_per_m3s_m: 8.5
+    parameter_source: legacy_single_reservoir_benchmark
+    design_flood_discharge_m3s: 15666.0
+    check_flood_discharge_m3s: 20683.0
+    max_total_release_m3s: 20683.0
+    high_flow_tailwater_anchors: [[15666.0, 1012.71], [20683.0, 1016.64]]
+  nuozhadu:
+    curve_dir: data/xiaowan_nuozhadu/reservoir_2
+    dead_level_m: 765.0
+    normal_level_m: 812.0
+    flood_limit_level_m: 804.0
+    initial_level_m: 812.0
+    max_turbine_discharge_m3s: 3537.0
+    max_power_kw: 5850000.0
+    firm_power_kw: 2406000.0
+    power_coefficient_kw_per_m3s_m: 8.5
+    parameter_source: user_confirmed_maximum_turbine_discharge_3537_m3s
+    power_model: fixed_power_coefficient
+    tailwater_curve_source: desktop_xiaowan_source_workbook
+    max_total_release_m3s: null
+    max_total_release_source: not_explicitly_constrained_in_current_confirmed_parameter_set
+
+reward:
+  # GWh-equivalent penalty charged once for each station-month whose power is
+  # strictly below that station's firm-power threshold. Both stations use the
+  # same coefficient. Set to 0.0 for the generation-only baseline.
+  firm_power_failure_penalty_gwh: 0.0
+  failure_definition: station_specific_monthly_power_below_firm_power
+  objective: generation_gwh_minus_penalty_gwh_per_failed_station_month
+  deficit_energy_role: diagnostic_only_not_in_ddp_objective
+  status: configured_failure_count_penalty_recorded_in_every_ddp_output
+
+algorithm_plan:
+  common_target_level_grid_step_m: 1.0
+  ddp_grid_step_scenarios_m: [0.5, 1.0, 2.0, 5.0]
+  include_dead_and_normal_levels: true
+  ddp: offline_perfect_foresight_upper_bound
+  sdp: current_inflow_joint_classes_no_forecast
+  iso_surf: current_observation_surface_no_forecast
+  double_dqn: joint_discrete_target_level_action_no_forecast

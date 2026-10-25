@@ -1,0 +1,120 @@
+{
+  "experiment_id": "continuous_ppo_v16_geometry_conditioned_final_lambda6000",
+  "seed": 1,
+  "mode": "final",
+  "source_config": "/root/private_data/continuous_ppo_v16_workspace_20261012/Platform-for-cascade-hydropower-reservoir-operation-16.0.0/configs/continuous_ppo_v16_final_lambda6000.yaml",
+  "configuration_sha256": "89f455c5058e10a731500732b655504739bda799246103610ae3cbd5f72ab6a0",
+  "configuration": {
+    "experiment_id": "continuous_ppo_v16_geometry_conditioned_final_lambda6000",
+    "problem": {
+      "physical_config": "configs/xiaowan_nuozhadu_v1.yaml",
+      "initial_levels_m": [
+        1240.0,
+        812.0
+      ]
+    },
+    "information": {
+      "one_step_perfect_forecast": true,
+      "state_order": [
+        "month",
+        "xiaowan_level_m",
+        "nuozhadu_level_m",
+        "xiaowan_natural_inflow_m3s",
+        "nuozhadu_interval_inflow_m3s"
+      ],
+      "nuozhadu_total_inflow_is_action_dependent": true,
+      "geometry_features_are_current_state_derived": true
+    },
+    "reward": {
+      "objective": "generation_gwh_minus_penalty_gwh_per_failed_station_month",
+      "firm_power_failure_penalty_gwh": 6000.0,
+      "scale_gwh": 7332.48,
+      "failure_definition": "station_specific_monthly_power_below_firm_power",
+      "deficit_energy_role": "diagnostic_only_not_in_objective",
+      "reward_reference_days": 30.4,
+      "clip": {
+        "enabled": false,
+        "lower": -1000.0,
+        "upper": 1000.0
+      }
+    },
+    "normalization": {
+      "method": "componentwise_minmax",
+      "clip": true
+    },
+    "validation": {
+      "enabled_in_development_mode": true,
+      "development_years": 320,
+      "validation_years": 80,
+      "interval_environment_steps": 24000,
+      "score": "mean_annual_penalized_objective_gwh"
+    },
+    "ppo": {
+      "learning_rate": 0.0009,
+      "gamma": 0.97,
+      "gae_lambda": 0.85,
+      "clip_range": 0.1,
+      "entropy_coefficient": 0.0,
+      "value_loss_coefficient": 0.5,
+      "max_gradient_norm": 0.5,
+      "minibatch_size": 320,
+      "update_epochs": 10,
+      "target_kl": 0.02,
+      "advantage_normalization": true,
+      "adam_epsilon": 1e-05,
+      "lr_schedule": "linear_decay",
+      "final_learning_rate_fraction": 0.05,
+      "initial_log_std": 0.0,
+      "min_log_std": -5.0,
+      "max_log_std": 1.0,
+      "squash_epsilon": 1e-06
+    },
+    "network": {
+      "separate_actor_critic": true,
+      "action_distribution": "geometry_conditioned_autoregressive_squashed_gaussian",
+      "action_transform": "autoregressive_fraction_to_exact_physical_feasible_interval_v1",
+      "actor_hidden_dimensions": [
+        512,
+        256
+      ],
+      "critic_hidden_dimensions": [
+        256,
+        256
+      ],
+      "xiaowan_geometry_features": [
+        "lower_level",
+        "upper_level",
+        "interval_width"
+      ],
+      "nuozhadu_geometry_features": [
+        "xiaowan_target",
+        "lower_level",
+        "upper_level",
+        "interval_width"
+      ],
+      "activation": "tanh",
+      "initialization": "orthogonal"
+    },
+    "training": {
+      "total_environment_steps": 720000,
+      "num_envs": 8,
+      "n_steps": 240,
+      "episode_months": 240,
+      "seeds": [
+        1,
+        42,
+        100
+      ],
+      "device": "auto",
+      "logging_interval_updates": 1,
+      "checkpoint_interval_updates": 13
+    },
+    "outputs": {
+      "root": "outputs/xiaowan_nuozhadu/continuous_ppo_v16_geometry_conditioned_final_lambda6000",
+      "checkpoints": "checkpoints",
+      "logs": "training",
+      "validation": "validation",
+      "evaluation": "evaluation"
+    }
+  }
+}

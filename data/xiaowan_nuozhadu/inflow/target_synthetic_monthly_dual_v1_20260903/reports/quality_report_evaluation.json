@@ -1,0 +1,162 @@
+{
+  "scenario": "evaluation",
+  "random_seed": 2026090302,
+  "qc_passed": true,
+  "units": "m3/s monthly mean flow",
+  "deseasonalized_definition": "For each station and calendar month, subtract that month's sample mean and divide by that month's sample standard deviation (ddof=1), then calculate Pearson correlation after concatenating all months.",
+  "block_definition": {
+    "start_month": "Jun",
+    "month_order": [
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May"
+    ],
+    "seam_reason": "The 24-D reconstruction uses overlapping rotated years so Dec-to-Jan is internal; the independent-block seam is placed at the weakest historical adjacent-month transition."
+  },
+  "checks": {
+    "expected_shape": [
+      400,
+      12,
+      2
+    ],
+    "all_finite": true,
+    "all_positive": true,
+    "monthly_mean_max_relative_error": 1.4135805746520878e-15,
+    "monthly_sd_max_relative_error": 8.713492747143318e-16,
+    "overall_spatial_abs_error": 0.00040451199213087374,
+    "deseasonalized_spatial_abs_error": 0.0027829626852310385,
+    "monthly_spatial_max_abs_error": 0.025683067252164626,
+    "rotated_24d_log_correlation_mae": 0.02460411074930274,
+    "rotated_24d_log_correlation_rmse": 0.03231288665210694,
+    "rotated_24d_log_correlation_p95_abs_error": 0.0624240715658273,
+    "rotated_24d_log_correlation_max_abs_error": 0.10765503586070702
+  },
+  "tolerances": {
+    "overall_spatial_abs_error": 0.01,
+    "deseasonalized_spatial_abs_error": 0.04,
+    "monthly_spatial_max_abs_error": 0.1,
+    "log_correlation_rmse": 0.1,
+    "monthly_mean_relative_error": 1e-06,
+    "monthly_sd_relative_error": 1e-06
+  },
+  "historical_spatial_correlation": {
+    "overall_pearson": 0.9943109378683516,
+    "deseasonalized_pearson": 0.9761574019791165,
+    "log_deseasonalized_pearson": 0.9795643356511909,
+    "per_month_pearson": {
+      "Jan": 0.9785901377003731,
+      "Feb": 0.9985227798041668,
+      "Mar": 0.9675711945630654,
+      "Apr": 0.9936894936419819,
+      "May": 0.9961606623203647,
+      "Jun": 0.9898759165217486,
+      "Jul": 0.9571369482706205,
+      "Aug": 0.9777781921335946,
+      "Sep": 0.9548900864851516,
+      "Oct": 0.9870400346465895,
+      "Nov": 0.9127866888128449,
+      "Dec": 0.9998466888489048
+    }
+  },
+  "synthetic_spatial_correlation": {
+    "overall_pearson": 0.9947154498604824,
+    "deseasonalized_pearson": 0.9789403646643475,
+    "log_deseasonalized_pearson": 0.9807897730697163,
+    "per_month_pearson": {
+      "Jan": 0.9822165519958853,
+      "Feb": 0.9985467866782218,
+      "Mar": 0.9632882714132891,
+      "Apr": 0.9934599792964038,
+      "May": 0.9970881796890119,
+      "Jun": 0.9913273443523178,
+      "Jul": 0.9542018360825171,
+      "Aug": 0.9808063279858547,
+      "Sep": 0.9611134809100103,
+      "Oct": 0.9869783626107891,
+      "Nov": 0.9384697560650095,
+      "Dec": 0.9997874988928612
+    }
+  },
+  "historical_distribution": {
+    "xiaowan": {
+      "minimum": 299.0,
+      "p01": 323.68,
+      "p05": 371.0,
+      "median": 911.5,
+      "p95": 3045.9999999999995,
+      "p99": 3639.710000000004,
+      "maximum": 4809.0,
+      "overall_mean": 1250.481182795699,
+      "annual_mean_sd": 194.33140092149264
+    },
+    "nuozhadu_interval": {
+      "minimum": 87.0,
+      "p01": 91.71,
+      "p05": 105.65,
+      "median": 265.0,
+      "p95": 893.9,
+      "p99": 1057.820000000001,
+      "maximum": 1398.0,
+      "overall_mean": 366.6693548387097,
+      "annual_mean_sd": 57.97006924023846
+    },
+    "nuozhadu_interval_to_xiaowan_ratio": {
+      "minimum": 0.20270270270270271,
+      "p05": 0.2895910585267021,
+      "median": 0.2907064464306417,
+      "mean": 0.29227467353435416,
+      "p95": 0.29224921824913974,
+      "maximum": 0.43863636363636366
+    }
+  },
+  "synthetic_distribution": {
+    "xiaowan": {
+      "minimum": 247.8859193802375,
+      "p01": 312.86226514709017,
+      "p05": 359.8355463644097,
+      "median": 895.019333171886,
+      "p95": 3010.9073001921724,
+      "p99": 3772.7325389759726,
+      "maximum": 5963.27793409805,
+      "overall_mean": 1250.481182795699,
+      "annual_mean_sd": 188.99776364121576
+    },
+    "nuozhadu_interval": {
+      "minimum": 71.70689210369727,
+      "p01": 89.31730506501056,
+      "p05": 103.97315895521871,
+      "median": 260.94423518147687,
+      "p95": 884.9646389847356,
+      "p99": 1106.1867360635083,
+      "maximum": 1679.5780264155546,
+      "overall_mean": 366.6693548387097,
+      "annual_mean_sd": 56.352649373963935
+    },
+    "nuozhadu_interval_to_xiaowan_ratio": {
+      "minimum": 0.20980306088641157,
+      "p05": 0.27590943918624755,
+      "median": 0.29039480181369837,
+      "mean": 0.29226106630570076,
+      "p95": 0.3191345825410681,
+      "maximum": 0.43938403553835903
+    }
+  },
+  "correlation_matrix_conditioning": {
+    "observed_min_eigenvalue": 2.607078314277317e-07,
+    "observed_condition_number": 46628354.64817233,
+    "regularization": 0.0001,
+    "model_min_eigenvalue": 0.00010026068176198537,
+    "model_condition_number": 121236.57461611429,
+    "synthetic_min_eigenvalue": 7.338453641836162e-05,
+    "synthetic_condition_number": 164138.88579369299
+  }
+}

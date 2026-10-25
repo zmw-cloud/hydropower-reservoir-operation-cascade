@@ -1,0 +1,26 @@
+{
+  "formal_splits": [
+    "train",
+    "evaluation"
+  ],
+  "source_generator": "target_synthetic_monthly_dual_v1_20260903",
+  "datasets": [
+    {
+      "path": "data/xiaowan_nuozhadu/inflow/target_synthetic_monthly_dual_v1_20260903/joint/inflow_joint_monthly_evaluation.csv",
+      "role": "evaluation",
+      "years": 400,
+      "months": 4800,
+      "sha256": "7ff612e1be78a47280159c4dadec9b522f975acbccd17b7cf0ff1382681853fa",
+      "seed": 2026090302
+    },
+    {
+      "path": "data/xiaowan_nuozhadu/inflow/target_synthetic_monthly_dual_v1_20260903/joint/inflow_joint_monthly_train.csv",
+      "role": "train",
+      "years": 400,
+      "months": 4800,
+      "sha256": "97336ddd99184025ffcc8d5cff8fb04dcd81e85a24732ccec7662597d85dfb1c",
+      "seed": 2026090301
+    }
+  ],
+  "note": "Only TRAIN/EVAL; no hydrology regeneration."
+}

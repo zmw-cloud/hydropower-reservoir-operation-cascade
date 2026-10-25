@@ -1,0 +1,62 @@
+[
+  {
+    "path": "pyproject.toml",
+    "reason": "Plot TIFF dependency; DOCX authoring is outside the benchmark runtime.",
+    "before_sha256": "6ea914f16243154070e15eb7f9da68c09ada20992689e55430f5671fdb459c5f",
+    "after_sha256": "3a561bc98d443075ce45fc9c0795580f07f098f1c2005c2c8e5475d3a05f1b44"
+  },
+  {
+    "path": "configs/paper/iso500.yaml",
+    "reason": "Add verified required_inflow_split=train_400y for the current teacher guard; no training/physics parameter changed."
+  },
+  {
+    "path": "scripts/run_p4_v1_continuous_ppo.py",
+    "reason": "Replace incompatible legacy default with the frozen final PPO6000 configuration.",
+    "before_sha256": "0e517138af57b896f7d2d558e71a780993c90e4a22c618ec4042dd09c16adaa2",
+    "after_sha256": "2866dca4f65bfc5158bea127f09add55cac69ed70c15fa48d49696a558a2e22f"
+  },
+  {
+    "path": "scripts/run_p4_v1_dqn.py",
+    "reason": "Paper DQN5000 default and baseline-only formal experiment scope.",
+    "before_sha256": "f4102b782c47b8f63b34938882ebffa792e939af99515b2e258eedc5d2dfee13",
+    "after_sha256": "893205c4be32d1c5c582663afe4143e6d1257237cbef4651edb710bfdf94c7dd"
+  },
+  {
+    "path": "scripts/run_p4_v1_iso.py",
+    "reason": "Verified final ISO500 default.",
+    "before_sha256": "a8fa48fe1d7caf5da2efa47304de7f5a767fe0c69353d97746b7fae96bca4d01",
+    "after_sha256": "f6436e22aaf06fbf60e5ad0e3bab4e0a896f49af5ef66234611cb2c3aeefe0c0"
+  },
+  {
+    "path": "scripts/paper_results_data.py",
+    "reason": "Resolve relocated frozen result roots relative to the new repository, independent of cwd.",
+    "before_sha256": "324f3ec9850cd794bdb17d3a1df01e5850f2e5746d45c4b25c5ee80f6c4e86ba",
+    "after_sha256": "90c6298fb060179c371d0b095af52101f326b6389e8938dde5e68a3d38846197"
+  },
+  {
+    "path": "scripts/render_anonymized_paper_figures.py",
+    "reason": "Bundle V6 plotting and hydrology dependencies locally; preserve original six-figure calculations.",
+    "before_sha256": "c2194697902d20bc41cbed245c84c8fd0fe3f7e64da3c559b7cd5b3431e7c3c2",
+    "after_sha256": "96c82be4b2e924d5e8f3590ce5441a2959cdffc872cdfca1530cf25ed06f1dbb"
+  },
+  {
+    "path": "scripts/plot_generation_reliability_tradeoff.py",
+    "reason": "Relocate tradeoff inputs only; preserve validation/evaluation semantics and calculations.",
+    "before_sha256": "359b522de52e8d887505e39e80e0fa45a9fbc37803b59a35e97c33ad37d8263f",
+    "after_sha256": "544ca3caf830bc6fcca7cdd3a31c3a174bc402d50d73363d05b47d64b18f4802"
+  },
+  {
+    "path": "hydrology/generator/config.json",
+    "reason": "Relocate input/output paths and retain TRAIN/EVAL only; original four-scenario configuration is provenance-only. No data regenerated."
+  },
+  {
+    "path": "data/xiaowan_nuozhadu/inflow/target_synthetic_monthly_dual_v1_20260903/generation_manifest.json",
+    "reason": "Document delivered TRAIN/EVAL subset; preserve complete original manifest separately."
+  },
+  {
+    "path": "scripts/paper_results_data.py",
+    "reason": "Update audit provenance description for local integrated copies; calculations unchanged.",
+    "before_sha256": "90c6298fb060179c371d0b095af52101f326b6389e8938dde5e68a3d38846197",
+    "after_sha256": "c19a236abc5ff2c47127243b5f3327b5a2bd2c8066a8a2b37ccc65b2b792f0be"
+  }
+]

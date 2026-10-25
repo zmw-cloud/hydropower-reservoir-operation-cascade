@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-25",
+  "scope": "Documentation-only update authorized by the user: code and data sources in README.",
+  "readme_before_sha256": "b71ade93c1c6a5c5216578f6038bf28e78b77a04c2a8cd9ad4e659a1a2ee4a11",
+  "readme_after_sha256": "0019b2a4a19ce9712c19bb0033ef060bef6ee258cdb4b77bcf94a709392517be",
+  "previous_release_manifest_sha256": "37af559c50273001e7a8da2f0cab3f9971311d451786015d527deba1fa84fd04",
+  "previous_readme": "README.before.md",
+  "previous_release_manifest": "release_manifest.before.json",
+  "note": "The archived manifest describes the pre-edit snapshot. The current release manifest updates README and adds this documentation archive; all other pre-existing entries are unchanged.",
+  "algorithm_data_model_result_changes": false
+}

@@ -1,0 +1,27 @@
+{
+  "stage": "development_lambda_scan",
+  "lambdas": [
+    0,
+    300,
+    600,
+    650,
+    800,
+    1000,
+    1200,
+    2000,
+    3000
+  ],
+  "seeds": [
+    1,
+    42,
+    100
+  ],
+  "training_years": 320,
+  "validation_years": 80,
+  "episodes_per_seed": 3000,
+  "checkpoint_selection": "maximum mean annual penalized validation objective within each lambda",
+  "lambda1200_source": "reused selected C02 confirmation",
+  "nearest_to_80_validation_lambda": 650.0,
+  "reported_final_lambda": 650,
+  "independent_evaluation_in_this_package": false
+}

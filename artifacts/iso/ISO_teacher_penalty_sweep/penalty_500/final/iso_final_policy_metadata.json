@@ -1,0 +1,349 @@
+{
+  "model_family": "random_forest",
+  "hyperparameters": {
+    "max_depth": 16,
+    "max_features": 0.5,
+    "min_samples_leaf": 1,
+    "n_estimators": 200
+  },
+  "monthly_model_count": 12,
+  "feature_definitions": [
+    "start_level_1_m",
+    "start_level_2_m",
+    "inflow_1_m3s",
+    "inflow_2_local_m3s"
+  ],
+  "target_definitions": [
+    "target_level_1_m",
+    "target_level_2_m"
+  ],
+  "feature_semantics": {
+    "inflow_1_m3s": "Xiaowan natural inflow known for the current month",
+    "inflow_2_local_m3s": "Nuozhadu interval natural inflow; excludes Xiaowan release"
+  },
+  "scaler_parameters_by_month": {
+    "1": {},
+    "2": {},
+    "3": {},
+    "4": {},
+    "5": {},
+    "6": {},
+    "7": {},
+    "8": {},
+    "9": {},
+    "10": {},
+    "11": {},
+    "12": {}
+  },
+  "monthly_fit_domains": {
+    "1": {
+      "start_level_1_m": [
+        1208.0,
+        1240.0
+      ],
+      "start_level_2_m": [
+        801.0,
+        812.0
+      ],
+      "inflow_1_m3s": [
+        289.6409468562,
+        645.4120815733
+      ],
+      "inflow_2_local_m3s": [
+        84.7598664184,
+        188.9888868145
+      ]
+    },
+    "2": {
+      "start_level_1_m": [
+        1190.0,
+        1240.0
+      ],
+      "start_level_2_m": [
+        798.0,
+        812.0
+      ],
+      "inflow_1_m3s": [
+        279.67425519,
+        600.7770009835
+      ],
+      "inflow_2_local_m3s": [
+        80.9556219119,
+        174.8071468114
+      ]
+    },
+    "3": {
+      "start_level_1_m": [
+        1167.0,
+        1238.0
+      ],
+      "start_level_2_m": [
+        795.0,
+        812.0
+      ],
+      "inflow_1_m3s": [
+        239.600218735,
+        852.2417545338
+      ],
+      "inflow_2_local_m3s": [
+        69.2706087757,
+        255.2965692859
+      ]
+    },
+    "4": {
+      "start_level_1_m": [
+        1167.0,
+        1231.0
+      ],
+      "start_level_2_m": [
+        792.0,
+        811.0
+      ],
+      "inflow_1_m3s": [
+        358.2776524367,
+        1108.1233058084
+      ],
+      "inflow_2_local_m3s": [
+        102.5355691726,
+        322.1879891846
+      ]
+    },
+    "5": {
+      "start_level_1_m": [
+        1166.0,
+        1225.0
+      ],
+      "start_level_2_m": [
+        785.0,
+        810.0
+      ],
+      "inflow_1_m3s": [
+        511.9702021,
+        1570.9007917727
+      ],
+      "inflow_2_local_m3s": [
+        148.3270738633,
+        451.7254932905
+      ]
+    },
+    "6": {
+      "start_level_1_m": [
+        1166.0,
+        1229.0
+      ],
+      "start_level_2_m": [
+        776.0,
+        804.0
+      ],
+      "inflow_1_m3s": [
+        709.0614179449,
+        3133.7925857161
+      ],
+      "inflow_2_local_m3s": [
+        202.2817541079,
+        932.391589024
+      ]
+    },
+    "7": {
+      "start_level_1_m": [
+        1166.0,
+        1234.0
+      ],
+      "start_level_2_m": [
+        769.0,
+        804.0
+      ],
+      "inflow_1_m3s": [
+        1210.4198796886,
+        3955.0473307509
+      ],
+      "inflow_2_local_m3s": [
+        414.2273274361,
+        1131.2483041473
+      ]
+    },
+    "8": {
+      "start_level_1_m": [
+        1166.0,
+        1236.0
+      ],
+      "start_level_2_m": [
+        770.0,
+        804.0
+      ],
+      "inflow_1_m3s": [
+        888.4300037551,
+        5595.0805967163
+      ],
+      "inflow_2_local_m3s": [
+        258.2311755338,
+        1554.9494012605
+      ]
+    },
+    "9": {
+      "start_level_1_m": [
+        1191.0,
+        1236.0
+      ],
+      "start_level_2_m": [
+        798.0,
+        804.0
+      ],
+      "inflow_1_m3s": [
+        1106.1422606421,
+        4444.5861925263
+      ],
+      "inflow_2_local_m3s": [
+        321.1617730114,
+        1309.1411428228
+      ]
+    },
+    "10": {
+      "start_level_1_m": [
+        1218.0,
+        1236.0
+      ],
+      "start_level_2_m": [
+        801.0,
+        804.0
+      ],
+      "inflow_1_m3s": [
+        621.4766015392,
+        3480.2688950339
+      ],
+      "inflow_2_local_m3s": [
+        181.7123017858,
+        1029.7487734546
+      ]
+    },
+    "11": {
+      "start_level_1_m": [
+        1230.0,
+        1236.0
+      ],
+      "start_level_2_m": [
+        800.0,
+        804.0
+      ],
+      "inflow_1_m3s": [
+        441.7882186797,
+        1600.5618030758
+      ],
+      "inflow_2_local_m3s": [
+        116.8469534745,
+        523.8305520839
+      ]
+    },
+    "12": {
+      "start_level_1_m": [
+        1222.0,
+        1240.0
+      ],
+      "start_level_2_m": [
+        801.0,
+        812.0
+      ],
+      "inflow_1_m3s": [
+        341.189572425,
+        952.6662336828
+      ],
+      "inflow_2_local_m3s": [
+        98.9596827694,
+        277.0677083543
+      ]
+    }
+  },
+  "training_months": 4800,
+  "training_years": 400,
+  "training_period": [
+    "2009-01",
+    "2408-12"
+  ],
+  "training_dataset_identifier": "ddp_train_400y_1m_interpolated_failure_count_lambda500_v1",
+  "teacher_ddp_schedule": "/home/xuehua/Platform-for-cascade-hydropower-reservoir-operation-ISO-V6-002654/outputs/DDP/teachers/failure_penalty_500/ddp_p4_v1_train_400y_1m_interpolated_failure_count_v1.csv",
+  "teacher_sha256": "98904b6cbbb2916614af208569b04f0bcd2825aa7afcb1acb61a4e4f6d08636b",
+  "teacher_summary_sha256": "18e8956465bc15bec9f16cc7ef55c3f22a8894ecd847be78e97a71218284c19a",
+  "teacher_action_fields": [
+    "target_level_1_m",
+    "target_level_2_m"
+  ],
+  "teacher_solver_requirement": "continuous-storage interpolated-continuation DDP",
+  "teacher_objective": "generation_gwh_minus_penalty_gwh_per_failed_station_month",
+  "firm_power_failure_penalty_gwh": 500.0,
+  "failure_definition": "station_specific_monthly_power_below_firm_power",
+  "initial_levels_m": [
+    1240.0,
+    812.0
+  ],
+  "terminal_reference_levels_m": [
+    1240.0,
+    812.0
+  ],
+  "teacher_terminal_constraint": "hard_final_end_state",
+  "monthly_max_target_levels_m": [
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1240.0,
+      812.0
+    ]
+  ],
+  "random_seed": 20260918,
+  "continuous_storage_carryover": true,
+  "physics_config": "/home/xuehua/Platform-for-cascade-hydropower-reservoir-operation-ISO-V6-002654/configs/xiaowan_nuozhadu_v1.yaml",
+  "physics_config_sha256": "30c87bd37c9ff1c0dde9bd0648149747baaf724cefb0a043c81889e17e77b594",
+  "physical_simulator_source_sha256": "05808ee52f5bfa72605f68378550914ec16830fcce3116a4ecc5f1e433b52970",
+  "best_development_config": "/home/xuehua/Platform-for-cascade-hydropower-reservoir-operation-ISO-V6-002654/outputs/ISO_teacher_penalty_sweep/penalty_500/development/best_iso_config.json",
+  "selection_metric": "reliability_target_then_generation",
+  "software": {
+    "python": "3.11.16",
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "scipy": "1.17.1",
+    "scikit_learn": "1.9.1",
+    "platform": "Linux-5.4.0-216-generic-x86_64-with-glibc2.31",
+    "byteorder": "little"
+  }
+}

@@ -1,0 +1,401 @@
+{
+  "roots": {
+    "single": "reference_results/single",
+    "cascade": "reference_results/cascade"
+  },
+  "output_directory": "outputs/paper_results",
+  "font_directory": "assets/fonts",
+  "font_family": "Times New Roman",
+  "target_reliability_pct": 80.0,
+  "cascade_reliability_metric": "minimum_of_mean_station_reliabilities",
+  "cascade_metric_authorization": "User confirmed min(XW, NZD) on 2026-10-21; existing representative points remain fixed.",
+  "expected_years": 400,
+  "expected_months": 4800,
+  "generation_tolerance_gwh": 1e-05,
+  "rate_tolerance_pct_points": 1e-07,
+  "colors": {
+    "DDP": "#1f77b4",
+    "SDP": "#2ca02c",
+    "ISO-RF": "#d62728",
+    "DQN": "#7564A8",
+    "PPO": "#D98932"
+  },
+  "cases": [
+    {
+      "id": "Case 1",
+      "label": "Single-reservoir operation",
+      "schema": "single",
+      "firm_power_kw": [
+        1854000.0
+      ],
+      "methods": [
+        {
+          "method": "DDP",
+          "penalty": 70,
+          "seeds": [
+            null
+          ],
+          "trajectory": {
+            "root": "single",
+            "path": "inputs/2f03cfeac27b/ddp_eval_lambda_70.csv"
+          },
+          "summary": {
+            "root": "single",
+            "path": "inputs/888af1a681e2/ddp_eval_lambda_70.json"
+          },
+          "expected_summary": {
+            "method": "DDP",
+            "lambda": 70,
+            "data_split": "evaluation"
+          },
+          "selection_stage": "evaluation_reference",
+          "selection_rule": "Previously fixed nearest-80 evaluation reference; ties: higher generation then lower penalty.",
+          "reference": {
+            "source": {
+              "root": "single",
+              "path": "inputs/32b6bd6f4de7/selected_performance_points.csv"
+            },
+            "filter": {
+              "algorithm": "DDP"
+            },
+            "mean_column": "annual_generation_gwh",
+            "penalty_column": "lambda"
+          }
+        },
+        {
+          "method": "SDP",
+          "penalty": 175,
+          "seeds": [
+            null
+          ],
+          "trajectory": {
+            "root": "single",
+            "path": "inputs/e83bc4f96342/sdp_eval_lambda_175.csv"
+          },
+          "summary": {
+            "root": "single",
+            "path": "inputs/4469d472ac7f/sdp_eval_lambda_175.json"
+          },
+          "expected_summary": {
+            "method": "SDP",
+            "lambda": 175,
+            "data_split": "evaluation"
+          },
+          "selection_stage": "evaluation_reference",
+          "selection_rule": "Previously fixed nearest-80 evaluation reference; ties: higher generation then lower penalty.",
+          "reference": {
+            "source": {
+              "root": "single",
+              "path": "inputs/32b6bd6f4de7/selected_performance_points.csv"
+            },
+            "filter": {
+              "algorithm": "SDP"
+            },
+            "mean_column": "annual_generation_gwh",
+            "penalty_column": "lambda"
+          }
+        },
+        {
+          "method": "ISO-RF",
+          "penalty": 700,
+          "seeds": [
+            null
+          ],
+          "trajectory": {
+            "root": "single",
+            "path": "inputs/c00a206329c0/iso_rf_eval_lambda_700.csv"
+          },
+          "summary": {
+            "root": "single",
+            "path": "inputs/fc5bd74c0a3c/iso_rf_eval_lambda_700.json"
+          },
+          "expected_summary": {
+            "method": "ISO-RF",
+            "lambda": 700,
+            "data_split": "evaluation"
+          },
+          "selection_stage": "validation",
+          "selection_rule": "Fixed RF hyperparameters selected at anchor1200; lambda700 selected on held-out80 years; refit on400 training years before evaluation.",
+          "evidence": [
+            {
+              "source": {
+                "root": "single",
+                "path": "inputs/951444eacf72/selected_lambda.json"
+              },
+              "expected": {
+                "lambda": 700,
+                "selection_stage": "lambda_on_validation",
+                "selection_data": "held_out_last_80_training_years"
+              }
+            }
+          ],
+          "reference": {
+            "source": {
+              "root": "single",
+              "path": "inputs/fc6f419a7421/iso_rf_evaluation_summary.csv"
+            },
+            "filter": {
+              "lambda": 700
+            },
+            "mean_column": "annual_generation_gwh",
+            "penalty_column": "lambda"
+          }
+        },
+        {
+          "method": "DQN",
+          "penalty": 650,
+          "seeds": [
+            1,
+            42,
+            100
+          ],
+          "trajectory": {
+            "root": "single",
+            "path": "inputs/67e392cc8c90/seed_{seed}/dqn_eval_lambda_650_seed_{seed}.csv"
+          },
+          "summary": {
+            "root": "single",
+            "path": "inputs/87ff109b7a49/seed_{seed}/dqn_eval_lambda_650_seed_{seed}.json"
+          },
+          "expected_summary": {
+            "lambda": 650,
+            "data_split": "evaluation",
+            "evaluation_split": "independent_400_year_evaluation",
+            "checkpoint_metadata.checkpoint_role": "final",
+            "evaluation_greedy": true,
+            "evaluation_learning": false
+          },
+          "selection_stage": "validation",
+          "selection_rule": "Existing validation-selected lambda650; common2300-episode final budget is median best-validation episode; average seeds1/42/100.",
+          "evidence": [
+            {
+              "source": {
+                "root": "single",
+                "path": "inputs/cdb2fc282f45/PACKAGE_INFO.json"
+              },
+              "expected": {
+                "reported_final_lambda": 650,
+                "nearest_to_80_validation_lambda": 650,
+                "validation_years": 80
+              }
+            }
+          ],
+          "reference": {
+            "source": {
+              "root": "single",
+              "path": "inputs/6b8b4876b40d/DQN_FINAL_SUMMARY.csv"
+            },
+            "filter": {
+              "metric": "annual_generation_gwh"
+            },
+            "mean_column": "mean"
+          }
+        }
+      ]
+    },
+    {
+      "id": "Case 2",
+      "label": "Cascade operation",
+      "schema": "cascade",
+      "firm_power_kw": [
+        1854000.0,
+        2406000.0
+      ],
+      "reference": {
+        "source": {
+          "root": "cascade",
+          "path": "inputs/b4bf7157061d/summary_algorithms.csv"
+        },
+        "method_column": "algorithm",
+        "method_values": {
+          "ISO-RF": "ISO"
+        },
+        "mean_column": "mean_annual_generation_GWh",
+        "penalty_column": "failure_penalty_gwh"
+      },
+      "methods": [
+        {
+          "method": "DDP",
+          "penalty": 200,
+          "seeds": [
+            null
+          ],
+          "trajectory": {
+            "root": "cascade",
+            "path": "inputs/495fc3d9633e/ddp_p4_v1_evaluation_400y_1m_interpolated_failure_count_v1.csv"
+          },
+          "summary": {
+            "root": "cascade",
+            "path": "inputs/52e8b56da7f0/ddp_p4_v1_evaluation_400y_1m_interpolated_failure_count_v1.json"
+          },
+          "expected_summary": {
+            "firm_power_failure_penalty_gwh": 200,
+            "inflow_split": "evaluation_400y"
+          },
+          "selection_stage": "evaluation_reference",
+          "selection_rule": "Previously accepted fixed DDP200 paper reference. Preserve the existing two-station choice; no reselection.",
+          "evidence": [
+            {
+              "source": {
+                "root": "cascade",
+                "path": "inputs/a3906e465a3a/comparison_ddp_sdp_iso_dqn_ppo.yaml"
+              },
+              "expected": {
+                "selected_results.DDP.failure_penalty_gwh": 200
+              }
+            }
+          ]
+        },
+        {
+          "method": "SDP",
+          "penalty": 400,
+          "seeds": [
+            null
+          ],
+          "trajectory": {
+            "root": "cascade",
+            "path": "inputs/54334d1c3cff/sdp_p4_v4_one_step_forecast_bilinear_continuation_evaluation_400y_1m_failure_count_penalty_400.csv"
+          },
+          "summary": {
+            "root": "cascade",
+            "path": "inputs/629a7a5d6cc2/sdp_p4_v4_one_step_forecast_bilinear_continuation_evaluation_400y_1m_failure_count_penalty_400.json"
+          },
+          "expected_summary": {
+            "firm_power_failure_penalty_gwh": 400,
+            "inflow_split": "evaluation_400y"
+          },
+          "selection_stage": "evaluation_reference",
+          "selection_rule": "Previously accepted fixed SDP400 paper reference. Preserve the existing two-station choice; no reselection.",
+          "evidence": [
+            {
+              "source": {
+                "root": "cascade",
+                "path": "inputs/a3906e465a3a/comparison_ddp_sdp_iso_dqn_ppo.yaml"
+              },
+              "expected": {
+                "selected_results.SDP.failure_penalty_gwh": 400
+              }
+            }
+          ]
+        },
+        {
+          "method": "ISO-RF",
+          "penalty": 500,
+          "seeds": [
+            null
+          ],
+          "trajectory": {
+            "root": "cascade",
+            "path": "inputs/a74286bd39b2/iso_schedule.csv"
+          },
+          "summary": {
+            "root": "cascade",
+            "path": "inputs/12f20cccab36/iso_summary.json"
+          },
+          "expected_summary": {
+            "failure_penalty_gwh": 500,
+            "scenario": "normal"
+          },
+          "selection_stage": "validation",
+          "selection_rule": "Fixed RF41 teacher-penalty500 selected from the existing eleven-group validation scan, then final independent evaluation.",
+          "evidence": [
+            {
+              "source": {
+                "root": "cascade",
+                "path": "inputs/7fa21b117838/selected_teacher_penalty_11groups.json"
+              },
+              "expected": {
+                "teacher_failure_penalty_gwh": 500
+              }
+            }
+          ]
+        },
+        {
+          "method": "DQN",
+          "penalty": 5000,
+          "seeds": [
+            1,
+            42,
+            100
+          ],
+          "trajectory": {
+            "root": "cascade",
+            "path": "inputs/521df6dde5d4/seed_{seed}/monthly_trajectory.csv"
+          },
+          "summary": {
+            "root": "cascade",
+            "path": "inputs/542a6439a33b/seed_{seed}/summary.json"
+          },
+          "expected_summary": {
+            "firm_power_failure_penalty_gwh": 5000,
+            "checkpoint_role": "final",
+            "mode": "final",
+            "evaluation_scenario": "baseline",
+            "evaluation_data_used_for_model_selection": false
+          },
+          "selection_stage": "validation",
+          "selection_rule": "Existing fixed lambda5000 choice after the eight-group validation comparison; formal final4800-episode evaluation, averaged across three seeds.",
+          "evidence": [
+            {
+              "source": {
+                "root": "cascade",
+                "path": "inputs/a3906e465a3a/comparison_ddp_sdp_iso_dqn_ppo.yaml"
+              },
+              "expected": {
+                "selected_results.DQN.failure_penalty_gwh": 5000
+              }
+            }
+          ]
+        },
+        {
+          "method": "PPO",
+          "penalty": 6000,
+          "seeds": [
+            1,
+            42,
+            100
+          ],
+          "trajectory": {
+            "root": "cascade",
+            "path": "inputs/5a88d3060481/seed_{seed}/evaluation_monthly.csv"
+          },
+          "summary": {
+            "root": "cascade",
+            "path": "inputs/ebf3b4acfa16/seed_{seed}/evaluation_monthly.json"
+          },
+          "expected_summary": {
+            "firm_power_failure_penalty_gwh": 6000,
+            "checkpoint_role": "final",
+            "mode": "final",
+            "trajectory_kind": "evaluation",
+            "policy_distribution": "geometry_conditioned_autoregressive_squashed_gaussian",
+            "experiment_id": "continuous_ppo_v16_geometry_conditioned_final_lambda6000"
+          },
+          "metadata": {
+            "root": "cascade",
+            "path": "inputs/da2776c930ea/seed_{seed}/config_snapshot.json"
+          },
+          "expected_metadata": {
+            "mode": "final",
+            "experiment_id": "continuous_ppo_v16_geometry_conditioned_final_lambda6000",
+            "configuration.reward.firm_power_failure_penalty_gwh": 6000,
+            "configuration.information.geometry_features_are_current_state_derived": true
+          },
+          "selection_stage": "validation",
+          "selection_rule": "Previously confirmed V16 geometry-conditioned PPO6000 from the12-group validation scan, then full400-year training and final evaluation.",
+          "evidence": [
+            {
+              "source": {
+                "root": "cascade",
+                "path": "inputs/a3906e465a3a/comparison_ddp_sdp_iso_dqn_ppo.yaml"
+              },
+              "expected": {
+                "selected_results.PPO.failure_penalty_gwh": 6000
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

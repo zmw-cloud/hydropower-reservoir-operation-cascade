@@ -1,0 +1,137 @@
+{
+  "method": "SDP",
+  "information_set": "month_levels_current_source_classes_one_step_perfect_forecast",
+  "closed_loop_state_storage": "continuous_physical_storage_grid_used_only_for_policy_lookup",
+  "months": 4800,
+  "grid_step_m": 1.0,
+  "state_grid_shape": [
+    75,
+    48,
+    10,
+    10
+  ],
+  "joint_action_count": 3600,
+  "solver_variant": "bilinear_continuation",
+  "continuation_value_lookup": "bilinear_interpolation_at_continuous_end_storage",
+  "policy_state_lookup": "nearest_level_indices_for_discrete_policy_table_only",
+  "objective_gwh": 16196587.009687234,
+  "total_generation_gwh": 17694187.009687234,
+  "total_xiaowan_deficit_energy_gwh": 195426.08247682088,
+  "total_nuozhadu_deficit_energy_gwh": 739814.8240351276,
+  "firm_power_failure_penalty_gwh": 900.0,
+  "objective_definition": "generation_energy_gwh_minus_gwh_equivalent_penalty_per_failed_station_month",
+  "failure_definition": "station_specific_monthly_power_strictly_below_firm_power",
+  "deficit_energy_role": "diagnostic_only_not_in_sdp_objective",
+  "firm_power_reliability": {
+    "xiaowan": 0.8477083333333333,
+    "nuozhadu": 0.805625
+  },
+  "firm_power_satisfied_months": {
+    "xiaowan": 4069,
+    "nuozhadu": 3867
+  },
+  "firm_power_failed_months": {
+    "xiaowan": 731,
+    "nuozhadu": 933
+  },
+  "total_failed_station_months": 1664,
+  "total_failure_penalty_gwh": 1497600.0,
+  "total_penalty_energy_gwh": 1497600.0,
+  "joint_firm_power_satisfaction": 0.7164583333333333,
+  "joint_firm_power_satisfied_months": 3439,
+  "monthly_max_target_levels_m": [
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1240.0,
+      812.0
+    ]
+  ],
+  "monthly_max_semantics": "applies_to_end_of_month_target_level",
+  "evaluation_inflow_sha256": "1416f86efbd0d7faa41b1e2ecbf9650fef77a17530aa836b6f511d8b41c38264",
+  "training_inflow_sha256": "639c7bc990efa27ec3787f31a0e499eaa79fdba822fdc2a1f80d0d2cae33a337",
+  "forecast_timing": "current_month_source_classes_known_before_policy_action",
+  "forecast_flow_application": "same_realized_continuous_source_flows_used_in_physical_transition",
+  "nuozhadu_forecast_inflow_definition": "local_incremental_inflow",
+  "nuozhadu_total_inflow_formation": "local_incremental_inflow_plus_routed_xiaowan_total_discharge_in_environment",
+  "out_of_training_range_counts": {
+    "xiaowan_below": 7,
+    "xiaowan_above": 3,
+    "nuozhadu_local_below": 7,
+    "nuozhadu_local_above": 8
+  },
+  "target_level_unreached_steps": {
+    "xiaowan": 56,
+    "nuozhadu": 238
+  },
+  "tailwater_extrapolated_steps": {
+    "xiaowan": 131,
+    "nuozhadu": 404
+  },
+  "max_abs_water_balance_error_m3": 4.71482053399086e-06,
+  "water_balance_tolerance_m3": 0.001,
+  "water_balance_within_tolerance": true,
+  "inter_month_storage_continuity": {
+    "comparisons": 4799,
+    "xiaowan_max_abs_jump_m3": 0.0,
+    "nuozhadu_max_abs_jump_m3": 0.0,
+    "cascade_max_abs_net_jump_m3": 0.0,
+    "xiaowan_max_abs_level_jump_m": 0.0,
+    "nuozhadu_max_abs_level_jump_m": 0.0,
+    "tolerance_m3": 0.001,
+    "within_tolerance": true
+  },
+  "inter_month_storage_continuity_within_tolerance": true,
+  "configuration": "xiaowan_nuozhadu_sdp.yaml",
+  "configuration_sha256": "123b27e6e663dc7a34485905662cb0afff104942df7c3f5c42ae44f336906075",
+  "physical_configuration": "xiaowan_nuozhadu_v1.yaml",
+  "physical_configuration_sha256": "0d35e3bdf229b14eda57419805a47b414bdba69506f9c8e4b23226c2d1d04b75",
+  "inflow_split": "evaluation_400y",
+  "inflow_source": "data/xiaowan_nuozhadu/inflow/target_synthetic_monthly_dual_v1_20260903/joint/inflow_joint_monthly_evaluation.csv",
+  "policy_archive": "/home/xuehua/Platform-for-cascade-hydropower-reservoir-operation-6.0.0-SDP/outputs/xiaowan_nuozhadu/train/sdp/1m/bilinear_continuation/policy/failure_penalty_900/sdp_p4_v4_one_step_forecast_bilinear_continuation_train_400y_1m_failure_count_penalty_900.npz",
+  "probability_directory": "/home/xuehua/Platform-for-cascade-hydropower-reservoir-operation-6.0.0-SDP/outputs/xiaowan_nuozhadu/train/sdp/1m/bilinear_continuation/probabilities",
+  "state_audit_csv": "/home/xuehua/Platform-for-cascade-hydropower-reservoir-operation-6.0.0-SDP/outputs/xiaowan_nuozhadu/evaluation/sdp/1m/bilinear_continuation/failure_penalty_900/sdp_p4_v4_one_step_forecast_bilinear_continuation_evaluation_400y_1m_failure_count_penalty_900_state_audit.csv",
+  "assumption_register": "docs/audit/uncertain_parameter_register_p4_v1.md"
+}

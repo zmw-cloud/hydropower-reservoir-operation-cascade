@@ -1,0 +1,95 @@
+{
+  "status": "passed",
+  "generator": "Target Synthetic Streamflow Generator - Monthly Dual Reservoir",
+  "synthetic_years_per_scenario": 400,
+  "calendar_labels": "2009-01 to 2408-12",
+  "input_file": "/home/xuehua/Target-Synthetic-Streamflow-Generator-monthly-dual-v1.0/nuozhadu_interval_inflow_difference (1).xlsx",
+  "input_sha256": "cbfaf03284c6fc88b5314c3ad7176717d3631236f44dccec0bc12debb6088789",
+  "historical_months": 372,
+  "historical_years": 31,
+  "units": "m3/s monthly mean flow",
+  "station_columns": {
+    "xiaowan": "xiaowan_natural_inflow_m3s",
+    "nuozhadu_interval": "nuozhadu_interval_inflow_m3s"
+  },
+  "rotated_block_start_month": 6,
+  "scenarios": [
+    {
+      "name": "train",
+      "seed": 2026090301,
+      "qc_passed": true,
+      "historical_overall_pearson": 0.9943109378683516,
+      "synthetic_overall_pearson": 0.9942101206893459,
+      "historical_deseasonalized_pearson": 0.9761574019791165,
+      "synthetic_deseasonalized_pearson": 0.9771281377444282,
+      "files": [
+        "xiaowan/SynMonthlyInflow_train.xlsx",
+        "nuozhadu_interval/SynMonthlyInflow_train.xlsx",
+        "joint/inflow_joint_monthly_train.csv",
+        "joint/inflow_joint_monthly_train.xlsx",
+        "reports/quality_report_train.json",
+        "reports/quality_report_train.xlsx",
+        "reports/sampled_historical_years_train.csv",
+        "reports/metadata_train.json"
+      ]
+    },
+    {
+      "name": "evaluation",
+      "seed": 2026090302,
+      "qc_passed": true,
+      "historical_overall_pearson": 0.9943109378683516,
+      "synthetic_overall_pearson": 0.9947154498604824,
+      "historical_deseasonalized_pearson": 0.9761574019791165,
+      "synthetic_deseasonalized_pearson": 0.9789403646643475,
+      "files": [
+        "xiaowan/SynMonthlyInflow_evaluation.xlsx",
+        "nuozhadu_interval/SynMonthlyInflow_evaluation.xlsx",
+        "joint/inflow_joint_monthly_evaluation.csv",
+        "joint/inflow_joint_monthly_evaluation.xlsx",
+        "reports/quality_report_evaluation.json",
+        "reports/quality_report_evaluation.xlsx",
+        "reports/sampled_historical_years_evaluation.csv",
+        "reports/metadata_evaluation.json"
+      ]
+    },
+    {
+      "name": "dry",
+      "seed": 2026090303,
+      "qc_passed": true,
+      "historical_overall_pearson": 0.9943109378683516,
+      "synthetic_overall_pearson": 0.994539886084439,
+      "historical_deseasonalized_pearson": 0.9761574019791165,
+      "synthetic_deseasonalized_pearson": 0.9767533332214916,
+      "files": [
+        "xiaowan/SynMonthlyInflow_dry.xlsx",
+        "nuozhadu_interval/SynMonthlyInflow_dry.xlsx",
+        "joint/inflow_joint_monthly_dry.csv",
+        "joint/inflow_joint_monthly_dry.xlsx",
+        "reports/quality_report_dry.json",
+        "reports/quality_report_dry.xlsx",
+        "reports/sampled_historical_years_dry.csv",
+        "reports/metadata_dry.json"
+      ]
+    },
+    {
+      "name": "wet",
+      "seed": 2026090304,
+      "qc_passed": true,
+      "historical_overall_pearson": 0.9943109378683516,
+      "synthetic_overall_pearson": 0.9949182153466462,
+      "historical_deseasonalized_pearson": 0.9761574019791165,
+      "synthetic_deseasonalized_pearson": 0.9795825482229719,
+      "files": [
+        "xiaowan/SynMonthlyInflow_wet.xlsx",
+        "nuozhadu_interval/SynMonthlyInflow_wet.xlsx",
+        "joint/inflow_joint_monthly_wet.csv",
+        "joint/inflow_joint_monthly_wet.xlsx",
+        "reports/quality_report_wet.json",
+        "reports/quality_report_wet.xlsx",
+        "reports/sampled_historical_years_wet.csv",
+        "reports/metadata_wet.json"
+      ]
+    }
+  ],
+  "failed_qc_scenarios": []
+}

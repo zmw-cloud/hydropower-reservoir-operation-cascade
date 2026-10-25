@@ -1,0 +1,10 @@
+{
+  "role": "isolated_RL_configuration_inspection_not_historical_training_lock",
+  "python": "3.10.20 | packaged by Anaconda, Inc. | (main, Jun 11 2026, 15:13:20) [MSC v.1942 64 bit (AMD64)]",
+  "numpy_linkage": "OpenBLAS wheel; no KMP duplicate-runtime bypass",
+  "numpy": "2.2.6",
+  "pandas": "2.3.3",
+  "torch": "2.13.0+cpu",
+  "gymnasium": "1.3.0",
+  "PyYAML": "6.0.3"
+}

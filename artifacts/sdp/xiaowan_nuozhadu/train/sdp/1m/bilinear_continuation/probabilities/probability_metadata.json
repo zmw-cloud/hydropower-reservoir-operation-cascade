@@ -1,0 +1,48 @@
+{
+  "schema_version": 1,
+  "sources": [
+    "xiaowan_inflow_m3s",
+    "nuozhadu_local_inflow_m3s"
+  ],
+  "n_inflow_classes": 10,
+  "expected_years": 400,
+  "months": 4800,
+  "start_month": "2009-01",
+  "end_month": "2408-12",
+  "training_sha256": "639c7bc990efa27ec3787f31a0e499eaa79fdba822fdc2a1f80d0d2cae33a337",
+  "class_numbering": "zero_based_0_to_9",
+  "classification": "10_equal_width_intervals_from_training_month_min_max",
+  "interval_convention": "left_closed_right_open_last_interval_right_closed",
+  "constant_month_convention": "all_samples_in_class_0_all_representatives_equal_constant",
+  "out_of_range_convention": "clip_to_first_or_last_class_constant_month_to_class_0",
+  "representative_inflow": "interval_midpoint",
+  "probability_definition": "class_sample_count_divided_by_training_samples_per_month",
+  "source_dependence": "independent_product_of_two_monthly_marginals",
+  "temporal_dependence": "monthly_marginals_do_not_condition_on_previous_classes",
+  "calendar_convention": "training_mean_calendar_days_per_month_evaluation_uses_actual_calendar_days",
+  "training_hash_normalization": "UTF-8 LF-terminated rows YYYY-MM,float.hex(source_1),float.hex(source_2)",
+  "mean_days": [
+    31.0,
+    28.2425,
+    31.0,
+    30.0,
+    31.0,
+    30.0,
+    31.0,
+    31.0,
+    30.0,
+    31.0,
+    30.0,
+    31.0
+  ],
+  "probability_files": {
+    "xiaowan_inflow_m3s": {
+      "filename": "xiaowan_inflow_probabilities.csv",
+      "sha256": "775a5e37bd990c951a0f169ae1825f86a7bb38a25137b60fe072bee716912fd9"
+    },
+    "nuozhadu_local_inflow_m3s": {
+      "filename": "nuozhadu_local_inflow_probabilities.csv",
+      "sha256": "86e009b18b6501405e4ee286636d7ca0a0620b5f163b51d0027e2a8da03acea6"
+    }
+  }
+}

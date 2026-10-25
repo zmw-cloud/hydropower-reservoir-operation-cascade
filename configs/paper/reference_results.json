@@ -1,0 +1,165 @@
+{
+  "records": [
+    {
+      "case": "Case 1",
+      "method": "DDP",
+      "penalty": 70,
+      "seed": null,
+      "trajectory": "reference_results/single/inputs/2f03cfeac27b/ddp_eval_lambda_70.csv",
+      "summary": "reference_results/single/inputs/888af1a681e2/ddp_eval_lambda_70.json",
+      "selection_stage": "evaluation_reference",
+      "selection_rule": "Previously fixed nearest-80 evaluation reference; ties: higher generation then lower penalty."
+    },
+    {
+      "case": "Case 1",
+      "method": "SDP",
+      "penalty": 175,
+      "seed": null,
+      "trajectory": "reference_results/single/inputs/e83bc4f96342/sdp_eval_lambda_175.csv",
+      "summary": "reference_results/single/inputs/4469d472ac7f/sdp_eval_lambda_175.json",
+      "selection_stage": "evaluation_reference",
+      "selection_rule": "Previously fixed nearest-80 evaluation reference; ties: higher generation then lower penalty."
+    },
+    {
+      "case": "Case 1",
+      "method": "ISO-RF",
+      "penalty": 700,
+      "seed": null,
+      "trajectory": "reference_results/single/inputs/c00a206329c0/iso_rf_eval_lambda_700.csv",
+      "summary": "reference_results/single/inputs/fc5bd74c0a3c/iso_rf_eval_lambda_700.json",
+      "selection_stage": "validation",
+      "selection_rule": "Fixed RF hyperparameters selected at anchor1200; lambda700 selected on held-out80 years; refit on400 training years before evaluation."
+    },
+    {
+      "case": "Case 1",
+      "method": "DQN",
+      "penalty": 650,
+      "seed": 1,
+      "trajectory": "reference_results/single/inputs/67e392cc8c90/seed_1/dqn_eval_lambda_650_seed_1.csv",
+      "summary": "reference_results/single/inputs/87ff109b7a49/seed_1/dqn_eval_lambda_650_seed_1.json",
+      "selection_stage": "validation",
+      "selection_rule": "Existing validation-selected lambda650; common2300-episode final budget is median best-validation episode; average seeds1/42/100."
+    },
+    {
+      "case": "Case 1",
+      "method": "DQN",
+      "penalty": 650,
+      "seed": 42,
+      "trajectory": "reference_results/single/inputs/67e392cc8c90/seed_42/dqn_eval_lambda_650_seed_42.csv",
+      "summary": "reference_results/single/inputs/87ff109b7a49/seed_42/dqn_eval_lambda_650_seed_42.json",
+      "selection_stage": "validation",
+      "selection_rule": "Existing validation-selected lambda650; common2300-episode final budget is median best-validation episode; average seeds1/42/100."
+    },
+    {
+      "case": "Case 1",
+      "method": "DQN",
+      "penalty": 650,
+      "seed": 100,
+      "trajectory": "reference_results/single/inputs/67e392cc8c90/seed_100/dqn_eval_lambda_650_seed_100.csv",
+      "summary": "reference_results/single/inputs/87ff109b7a49/seed_100/dqn_eval_lambda_650_seed_100.json",
+      "selection_stage": "validation",
+      "selection_rule": "Existing validation-selected lambda650; common2300-episode final budget is median best-validation episode; average seeds1/42/100."
+    },
+    {
+      "case": "Case 2",
+      "method": "DDP",
+      "penalty": 200,
+      "seed": null,
+      "trajectory": "reference_results/cascade/inputs/495fc3d9633e/ddp_p4_v1_evaluation_400y_1m_interpolated_failure_count_v1.csv",
+      "summary": "reference_results/cascade/inputs/52e8b56da7f0/ddp_p4_v1_evaluation_400y_1m_interpolated_failure_count_v1.json",
+      "selection_stage": "evaluation_reference",
+      "selection_rule": "Previously accepted fixed DDP200 paper reference. Preserve the existing two-station choice; no reselection."
+    },
+    {
+      "case": "Case 2",
+      "method": "SDP",
+      "penalty": 400,
+      "seed": null,
+      "trajectory": "reference_results/cascade/inputs/54334d1c3cff/sdp_p4_v4_one_step_forecast_bilinear_continuation_evaluation_400y_1m_failure_count_penalty_400.csv",
+      "summary": "reference_results/cascade/inputs/629a7a5d6cc2/sdp_p4_v4_one_step_forecast_bilinear_continuation_evaluation_400y_1m_failure_count_penalty_400.json",
+      "selection_stage": "evaluation_reference",
+      "selection_rule": "Previously accepted fixed SDP400 paper reference. Preserve the existing two-station choice; no reselection."
+    },
+    {
+      "case": "Case 2",
+      "method": "ISO-RF",
+      "penalty": 500,
+      "seed": null,
+      "trajectory": "reference_results/cascade/inputs/a74286bd39b2/iso_schedule.csv",
+      "summary": "reference_results/cascade/inputs/12f20cccab36/iso_summary.json",
+      "selection_stage": "validation",
+      "selection_rule": "Fixed RF41 teacher-penalty500 selected from the existing eleven-group validation scan, then final independent evaluation."
+    },
+    {
+      "case": "Case 2",
+      "method": "DQN",
+      "penalty": 5000,
+      "seed": 1,
+      "trajectory": "reference_results/cascade/inputs/521df6dde5d4/seed_1/monthly_trajectory.csv",
+      "summary": "reference_results/cascade/inputs/542a6439a33b/seed_1/summary.json",
+      "selection_stage": "validation",
+      "selection_rule": "Existing fixed lambda5000 choice after the eight-group validation comparison; formal final4800-episode evaluation, averaged across three seeds."
+    },
+    {
+      "case": "Case 2",
+      "method": "DQN",
+      "penalty": 5000,
+      "seed": 42,
+      "trajectory": "reference_results/cascade/inputs/521df6dde5d4/seed_42/monthly_trajectory.csv",
+      "summary": "reference_results/cascade/inputs/542a6439a33b/seed_42/summary.json",
+      "selection_stage": "validation",
+      "selection_rule": "Existing fixed lambda5000 choice after the eight-group validation comparison; formal final4800-episode evaluation, averaged across three seeds."
+    },
+    {
+      "case": "Case 2",
+      "method": "DQN",
+      "penalty": 5000,
+      "seed": 100,
+      "trajectory": "reference_results/cascade/inputs/521df6dde5d4/seed_100/monthly_trajectory.csv",
+      "summary": "reference_results/cascade/inputs/542a6439a33b/seed_100/summary.json",
+      "selection_stage": "validation",
+      "selection_rule": "Existing fixed lambda5000 choice after the eight-group validation comparison; formal final4800-episode evaluation, averaged across three seeds."
+    },
+    {
+      "case": "Case 2",
+      "method": "PPO",
+      "penalty": 6000,
+      "seed": 1,
+      "trajectory": "reference_results/cascade/inputs/5a88d3060481/seed_1/evaluation_monthly.csv",
+      "summary": "reference_results/cascade/inputs/ebf3b4acfa16/seed_1/evaluation_monthly.json",
+      "selection_stage": "validation",
+      "selection_rule": "Previously confirmed V16 geometry-conditioned PPO6000 from the12-group validation scan, then full400-year training and final evaluation."
+    },
+    {
+      "case": "Case 2",
+      "method": "PPO",
+      "penalty": 6000,
+      "seed": 42,
+      "trajectory": "reference_results/cascade/inputs/5a88d3060481/seed_42/evaluation_monthly.csv",
+      "summary": "reference_results/cascade/inputs/ebf3b4acfa16/seed_42/evaluation_monthly.json",
+      "selection_stage": "validation",
+      "selection_rule": "Previously confirmed V16 geometry-conditioned PPO6000 from the12-group validation scan, then full400-year training and final evaluation."
+    },
+    {
+      "case": "Case 2",
+      "method": "PPO",
+      "penalty": 6000,
+      "seed": 100,
+      "trajectory": "reference_results/cascade/inputs/5a88d3060481/seed_100/evaluation_monthly.csv",
+      "summary": "reference_results/cascade/inputs/ebf3b4acfa16/seed_100/evaluation_monthly.json",
+      "selection_stage": "validation",
+      "selection_rule": "Previously confirmed V16 geometry-conditioned PPO6000 from the12-group validation scan, then full400-year training and final evaluation."
+    }
+  ],
+  "expected_months": 4800,
+  "expected_years": 400,
+  "firm_power_kw": {
+    "Case 1": [
+      1854000
+    ],
+    "Case 2": [
+      1854000,
+      2406000
+    ]
+  }
+}

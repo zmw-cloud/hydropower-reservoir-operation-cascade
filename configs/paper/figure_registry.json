@@ -1,0 +1,53 @@
+{
+  "scope": "Previously requested figures only; no single-reservoir plotting entry.",
+  "figures": [
+    {
+      "paper_id": "Fig.1",
+      "entry": "render_anonymized_paper_figures.py",
+      "legacy_id": "fig1",
+      "kind": "hydrology"
+    },
+    {
+      "paper_id": "Fig.4",
+      "entry": "render_anonymized_paper_figures.py",
+      "legacy_id": "fig3",
+      "kind": "cascade_tradeoff"
+    },
+    {
+      "paper_id": "Fig.5",
+      "entry": "plot_paper_results.py",
+      "argument": "--figure violin",
+      "kind": "cross_case_annual_violin"
+    },
+    {
+      "paper_id": "Fig.6",
+      "entry": "render_anonymized_paper_figures.py",
+      "legacy_id": "fig5",
+      "kind": "power_duration"
+    },
+    {
+      "paper_id": "Fig.7",
+      "entry": "render_anonymized_paper_figures.py",
+      "legacy_id": "fig6",
+      "kind": "monthly_levels"
+    },
+    {
+      "paper_id": "Fig.8",
+      "entry": "render_anonymized_paper_figures.py",
+      "legacy_id": "fig7",
+      "kind": "monthly_spill"
+    },
+    {
+      "paper_id": "Fig.9",
+      "entry": "render_anonymized_paper_figures.py",
+      "legacy_id": "fig8",
+      "kind": "dqn_ppo_adjustment"
+    },
+    {
+      "paper_id": "previously_requested_transfer",
+      "entry": "plot_paper_results.py",
+      "argument": "--figure transfer",
+      "kind": "performance_transfer"
+    }
+  ]
+}

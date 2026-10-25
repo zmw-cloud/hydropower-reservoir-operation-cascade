@@ -1,0 +1,14 @@
+{
+  "role": "integration_validation_environment_not_historical_training_lock",
+  "python": "3.10.20 | packaged by Anaconda, Inc. | (main, Jun 11 2026, 15:13:20) [MSC v.1942 64 bit (AMD64)]",
+  "numpy": "2.2.5",
+  "pandas": "2.3.3",
+  "scipy": "1.15.3",
+  "scikit-learn": "1.7.1",
+  "torch": "2.13.0+cpu",
+  "gymnasium": "1.3.0",
+  "matplotlib": "3.10.9",
+  "PyYAML": "6.0.3",
+  "Pillow": "11.1.0",
+  "openpyxl": "3.1.5"
+}

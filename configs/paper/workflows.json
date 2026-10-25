@@ -1,0 +1,290 @@
+{
+  "system": "cascade",
+  "formal_scenarios": [
+    "train",
+    "evaluation"
+  ],
+  "methods": {
+    "ddp": {
+      "penalty": 200,
+      "config": "configs/paper/ddp200.yaml"
+    },
+    "sdp": {
+      "penalty": 400,
+      "config": "configs/paper/sdp400.yaml"
+    },
+    "iso": {
+      "penalty": 500,
+      "config": "configs/paper/iso500.yaml"
+    },
+    "dqn": {
+      "penalty": 5000,
+      "config": "configs/paper/dqn5000.yaml",
+      "development_config": "configs/paper/dqn5000_development.yaml"
+    },
+    "ppo": {
+      "penalty": 6000,
+      "config": "configs/paper/ppo6000.yaml",
+      "development_config": "configs/paper/ppo6000_development.yaml"
+    }
+  },
+  "bindings": [
+    {
+      "source": "artifacts/dqn/seed_1/checkpoints/final.pt",
+      "target": "outputs/xiaowan_nuozhadu/dqn_1m_v11_action_conditioned_local_penalty_scan/experiments/dqn_1m_v11_local_penalty_lambda_05000p00/seed_1/final/checkpoints/final.pt",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/dqn/seed_1/config_snapshot.json",
+      "target": "outputs/xiaowan_nuozhadu/dqn_1m_v11_action_conditioned_local_penalty_scan/experiments/dqn_1m_v11_local_penalty_lambda_05000p00/seed_1/final/config_snapshot.json",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/dqn/seed_1/metadata.json",
+      "target": "outputs/xiaowan_nuozhadu/dqn_1m_v11_action_conditioned_local_penalty_scan/experiments/dqn_1m_v11_local_penalty_lambda_05000p00/seed_1/final/metadata.json",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/dqn/seed_1/training/history.csv",
+      "target": "outputs/xiaowan_nuozhadu/dqn_1m_v11_action_conditioned_local_penalty_scan/experiments/dqn_1m_v11_local_penalty_lambda_05000p00/seed_1/final/training/history.csv",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/dqn/seed_42/checkpoints/final.pt",
+      "target": "outputs/xiaowan_nuozhadu/dqn_1m_v11_action_conditioned_local_penalty_scan/experiments/dqn_1m_v11_local_penalty_lambda_05000p00/seed_42/final/checkpoints/final.pt",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/dqn/seed_42/config_snapshot.json",
+      "target": "outputs/xiaowan_nuozhadu/dqn_1m_v11_action_conditioned_local_penalty_scan/experiments/dqn_1m_v11_local_penalty_lambda_05000p00/seed_42/final/config_snapshot.json",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/dqn/seed_42/metadata.json",
+      "target": "outputs/xiaowan_nuozhadu/dqn_1m_v11_action_conditioned_local_penalty_scan/experiments/dqn_1m_v11_local_penalty_lambda_05000p00/seed_42/final/metadata.json",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/dqn/seed_42/training/history.csv",
+      "target": "outputs/xiaowan_nuozhadu/dqn_1m_v11_action_conditioned_local_penalty_scan/experiments/dqn_1m_v11_local_penalty_lambda_05000p00/seed_42/final/training/history.csv",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/dqn/seed_100/checkpoints/final.pt",
+      "target": "outputs/xiaowan_nuozhadu/dqn_1m_v11_action_conditioned_local_penalty_scan/experiments/dqn_1m_v11_local_penalty_lambda_05000p00/seed_100/final/checkpoints/final.pt",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/dqn/seed_100/config_snapshot.json",
+      "target": "outputs/xiaowan_nuozhadu/dqn_1m_v11_action_conditioned_local_penalty_scan/experiments/dqn_1m_v11_local_penalty_lambda_05000p00/seed_100/final/config_snapshot.json",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/dqn/seed_100/metadata.json",
+      "target": "outputs/xiaowan_nuozhadu/dqn_1m_v11_action_conditioned_local_penalty_scan/experiments/dqn_1m_v11_local_penalty_lambda_05000p00/seed_100/final/metadata.json",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/dqn/seed_100/training/history.csv",
+      "target": "outputs/xiaowan_nuozhadu/dqn_1m_v11_action_conditioned_local_penalty_scan/experiments/dqn_1m_v11_local_penalty_lambda_05000p00/seed_100/final/training/history.csv",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/ppo/seed_1/checkpoints/final.pt",
+      "target": "outputs/xiaowan_nuozhadu/continuous_ppo_v16_geometry_conditioned_final_lambda6000/experiments/continuous_ppo_v16_geometry_conditioned_final_lambda6000/seed_1/final/checkpoints/final.pt",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/ppo/seed_1/config_snapshot.json",
+      "target": "outputs/xiaowan_nuozhadu/continuous_ppo_v16_geometry_conditioned_final_lambda6000/experiments/continuous_ppo_v16_geometry_conditioned_final_lambda6000/seed_1/final/config_snapshot.json",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/ppo/seed_1/metadata.json",
+      "target": "outputs/xiaowan_nuozhadu/continuous_ppo_v16_geometry_conditioned_final_lambda6000/experiments/continuous_ppo_v16_geometry_conditioned_final_lambda6000/seed_1/final/metadata.json",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/ppo/seed_1/training/history.csv",
+      "target": "outputs/xiaowan_nuozhadu/continuous_ppo_v16_geometry_conditioned_final_lambda6000/experiments/continuous_ppo_v16_geometry_conditioned_final_lambda6000/seed_1/final/training/history.csv",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/ppo/seed_42/checkpoints/final.pt",
+      "target": "outputs/xiaowan_nuozhadu/continuous_ppo_v16_geometry_conditioned_final_lambda6000/experiments/continuous_ppo_v16_geometry_conditioned_final_lambda6000/seed_42/final/checkpoints/final.pt",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/ppo/seed_42/config_snapshot.json",
+      "target": "outputs/xiaowan_nuozhadu/continuous_ppo_v16_geometry_conditioned_final_lambda6000/experiments/continuous_ppo_v16_geometry_conditioned_final_lambda6000/seed_42/final/config_snapshot.json",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/ppo/seed_42/metadata.json",
+      "target": "outputs/xiaowan_nuozhadu/continuous_ppo_v16_geometry_conditioned_final_lambda6000/experiments/continuous_ppo_v16_geometry_conditioned_final_lambda6000/seed_42/final/metadata.json",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/ppo/seed_42/training/history.csv",
+      "target": "outputs/xiaowan_nuozhadu/continuous_ppo_v16_geometry_conditioned_final_lambda6000/experiments/continuous_ppo_v16_geometry_conditioned_final_lambda6000/seed_42/final/training/history.csv",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/ppo/seed_100/checkpoints/final.pt",
+      "target": "outputs/xiaowan_nuozhadu/continuous_ppo_v16_geometry_conditioned_final_lambda6000/experiments/continuous_ppo_v16_geometry_conditioned_final_lambda6000/seed_100/final/checkpoints/final.pt",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/ppo/seed_100/config_snapshot.json",
+      "target": "outputs/xiaowan_nuozhadu/continuous_ppo_v16_geometry_conditioned_final_lambda6000/experiments/continuous_ppo_v16_geometry_conditioned_final_lambda6000/seed_100/final/config_snapshot.json",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/ppo/seed_100/metadata.json",
+      "target": "outputs/xiaowan_nuozhadu/continuous_ppo_v16_geometry_conditioned_final_lambda6000/experiments/continuous_ppo_v16_geometry_conditioned_final_lambda6000/seed_100/final/metadata.json",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/ppo/seed_100/training/history.csv",
+      "target": "outputs/xiaowan_nuozhadu/continuous_ppo_v16_geometry_conditioned_final_lambda6000/experiments/continuous_ppo_v16_geometry_conditioned_final_lambda6000/seed_100/final/training/history.csv",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/iso/DDP/teachers/failure_penalty_500/ddp_p4_v1_train_400y_1m_interpolated_failure_count_v1.csv",
+      "target": "outputs/DDP/teachers/failure_penalty_500/ddp_p4_v1_train_400y_1m_interpolated_failure_count_v1.csv",
+      "stages": [
+        "final-train",
+        "development"
+      ]
+    },
+    {
+      "source": "artifacts/iso/DDP/teachers/failure_penalty_500/ddp_p4_v1_train_400y_1m_interpolated_failure_count_v1.json",
+      "target": "outputs/DDP/teachers/failure_penalty_500/ddp_p4_v1_train_400y_1m_interpolated_failure_count_v1.json",
+      "stages": [
+        "final-train",
+        "development"
+      ]
+    },
+    {
+      "source": "artifacts/iso/ISO_teacher_penalty_sweep/penalty_500/development/best_iso_config.json",
+      "target": "outputs/ISO_teacher_penalty_sweep/penalty_500/development/best_iso_config.json",
+      "stages": [
+        "final-train",
+        "development"
+      ]
+    },
+    {
+      "source": "artifacts/iso/ISO_teacher_penalty_sweep/penalty_500/development/iso_development_contract.json",
+      "target": "outputs/ISO_teacher_penalty_sweep/penalty_500/development/iso_development_contract.json",
+      "stages": [
+        "final-train",
+        "development"
+      ]
+    },
+    {
+      "source": "artifacts/iso/ISO_teacher_penalty_sweep/penalty_500/development/iso_development_results.csv",
+      "target": "outputs/ISO_teacher_penalty_sweep/penalty_500/development/iso_development_results.csv",
+      "stages": [
+        "final-train",
+        "development"
+      ]
+    },
+    {
+      "source": "artifacts/iso/ISO_teacher_penalty_sweep/penalty_500/final/iso_final_policy.pkl",
+      "target": "outputs/ISO_teacher_penalty_sweep/penalty_500/final/iso_final_policy.pkl",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/iso/ISO_teacher_penalty_sweep/penalty_500/final/iso_final_policy_metadata.json",
+      "target": "outputs/ISO_teacher_penalty_sweep/penalty_500/final/iso_final_policy_metadata.json",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/sdp/xiaowan_nuozhadu/train/sdp/1m/bilinear_continuation/probabilities/probability_metadata.json",
+      "target": "outputs/xiaowan_nuozhadu/train/sdp/1m/bilinear_continuation/probabilities/probability_metadata.json",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/sdp/xiaowan_nuozhadu/train/sdp/1m/bilinear_continuation/probabilities/nuozhadu_local_inflow_probabilities.csv",
+      "target": "outputs/xiaowan_nuozhadu/train/sdp/1m/bilinear_continuation/probabilities/nuozhadu_local_inflow_probabilities.csv",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/sdp/xiaowan_nuozhadu/train/sdp/1m/bilinear_continuation/probabilities/xiaowan_inflow_probabilities.csv",
+      "target": "outputs/xiaowan_nuozhadu/train/sdp/1m/bilinear_continuation/probabilities/xiaowan_inflow_probabilities.csv",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/sdp/xiaowan_nuozhadu/train/sdp/1m/bilinear_continuation/policy/failure_penalty_400/sdp_p4_v4_one_step_forecast_bilinear_continuation_train_400y_1m_failure_count_penalty_400.npz",
+      "target": "outputs/xiaowan_nuozhadu/train/sdp/1m/bilinear_continuation/policy/failure_penalty_400/sdp_p4_v4_one_step_forecast_bilinear_continuation_train_400y_1m_failure_count_penalty_400.npz",
+      "stages": [
+        "evaluate"
+      ]
+    },
+    {
+      "source": "artifacts/sdp/xiaowan_nuozhadu/train/sdp/1m/bilinear_continuation/policy/failure_penalty_400/sdp_p4_v4_one_step_forecast_bilinear_continuation_train_400y_1m_failure_count_penalty_400.json",
+      "target": "outputs/xiaowan_nuozhadu/train/sdp/1m/bilinear_continuation/policy/failure_penalty_400/sdp_p4_v4_one_step_forecast_bilinear_continuation_train_400y_1m_failure_count_penalty_400.json",
+      "stages": [
+        "evaluate"
+      ]
+    }
+  ]
+}

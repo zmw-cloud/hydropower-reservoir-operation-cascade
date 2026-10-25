@@ -1,0 +1,142 @@
+{
+  "months": 4800,
+  "cascade_generation_gwh": 17763174.55955279,
+  "xiaowan_generation_gwh": 8140291.009806009,
+  "nuozhadu_generation_gwh": 9622883.549746782,
+  "penalized_objective_gwh": 16404174.55955279,
+  "failure_penalty_gwh": 500.0,
+  "total_failure_penalty_gwh": 1359000.0,
+  "failed_station_months": 2718,
+  "xiaowan_firm_power_reliability": 0.7972916666666667,
+  "nuozhadu_firm_power_reliability": 0.6364583333333333,
+  "min_station_firm_power_reliability": 0.6364583333333333,
+  "joint_firm_power_reliability": 0.6052083333333333,
+  "target_unreached_count": 7,
+  "target_unreached_rate": 0.0007291666666666667,
+  "xiaowan_target_unreached_count": 0,
+  "nuozhadu_target_unreached_count": 7,
+  "target_clip_count": 0,
+  "target_clip_rate": 0.0,
+  "xiaowan_target_clip_count": 0,
+  "nuozhadu_target_clip_count": 0,
+  "out_of_domain_count": 17,
+  "out_of_domain_rate": 0.0035416666666666665,
+  "prediction_anomaly_count": 0,
+  "xiaowan_level_min_m": 1167.325,
+  "xiaowan_level_max_m": 1240.0,
+  "nuozhadu_level_min_m": 795.905,
+  "nuozhadu_level_max_m": 812.0,
+  "max_abs_water_balance_error_1_m3": 4.172325134277344e-06,
+  "max_abs_water_balance_error_2_m3": 5.148351192474365e-06,
+  "max_abs_cascade_water_balance_error_m3": 6.77257776260376e-06,
+  "sum_abs_water_balance_error_1_m3": 0.003159778338158503,
+  "sum_abs_water_balance_error_2_m3": 0.004532864622888155,
+  "max_abs_storage_jump_1_m3": 0.0,
+  "max_abs_storage_jump_2_m3": 0.0,
+  "initial_levels_m": [
+    1240.0,
+    812.0
+  ],
+  "terminal_reference_levels_m": [
+    1240.0,
+    812.0
+  ],
+  "final_actual_levels_m": [
+    1231.98,
+    811.3
+  ],
+  "terminal_level_errors_m": [
+    -8.019999999999982,
+    -0.7000000000000455
+  ],
+  "terminal_constraint_enforced_on_policy": false,
+  "monthly_max_target_levels_m": [
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1240.0,
+      812.0
+    ]
+  ],
+  "flood_limit_exceedance_count": 0,
+  "continuous_storage_carryover": true,
+  "physical_simulator": "cascade_reservoir_benchmark.environment.CascadeReservoirEnv",
+  "out_of_domain_start_level_1_m_count": 0,
+  "out_of_domain_start_level_1_m_rate": 0.0,
+  "out_of_domain_start_level_2_m_count": 0,
+  "out_of_domain_start_level_2_m_rate": 0.0,
+  "out_of_domain_inflow_1_m3s_count": 10,
+  "out_of_domain_inflow_1_m3s_rate": 0.0020833333333333333,
+  "out_of_domain_inflow_2_local_m3s_count": 15,
+  "out_of_domain_inflow_2_local_m3s_rate": 0.003125,
+  "scenario": "normal",
+  "dataset_identifier": "target_synthetic_monthly_dual_v1_20260903_evaluation",
+  "inflow_path": "/home/xuehua/Platform-for-cascade-hydropower-reservoir-operation-ISO-V6-002654/data/xiaowan_nuozhadu/inflow/target_synthetic_monthly_dual_v1_20260903/joint/inflow_joint_monthly_evaluation.csv",
+  "inflow_sha256": "7ff612e1be78a47280159c4dadec9b522f975acbccd17b7cf0ff1382681853fa",
+  "final_model_path": "/home/xuehua/Platform-for-cascade-hydropower-reservoir-operation-ISO-V6-002654/outputs/ISO_teacher_penalty_sweep/penalty_500/final/iso_final_policy.pkl",
+  "final_model_sha256": "d4d3a9a7dd637b0471683b859a377ea59720b21eb34f396437f2f871ac56880c",
+  "physics_config": "/home/xuehua/Platform-for-cascade-hydropower-reservoir-operation-ISO-V6-002654/configs/xiaowan_nuozhadu_v1.yaml",
+  "physics_config_sha256": "30c87bd37c9ff1c0dde9bd0648149747baaf724cefb0a043c81889e17e77b594",
+  "physical_simulator_source_sha256": "05808ee52f5bfa72605f68378550914ec16830fcce3116a4ecc5f1e433b52970",
+  "model_family": "random_forest",
+  "hyperparameters": {
+    "max_depth": 16,
+    "max_features": 0.5,
+    "min_samples_leaf": 1,
+    "n_estimators": 200
+  },
+  "feature_order": [
+    "start_level_1_m",
+    "start_level_2_m",
+    "inflow_1_m3s",
+    "inflow_2_local_m3s"
+  ],
+  "target_order": [
+    "target_level_1_m",
+    "target_level_2_m"
+  ],
+  "selection_metric": "reliability_target_then_generation",
+  "refit_or_selection_on_scenario": false
+}

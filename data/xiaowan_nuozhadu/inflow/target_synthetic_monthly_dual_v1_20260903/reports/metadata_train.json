@@ -1,0 +1,118 @@
+{
+  "scenario": "train",
+  "random_seed": 2026090301,
+  "synthetic_years": 400,
+  "calendar_start_year": 2009,
+  "units": "m3/s monthly mean flow",
+  "input_file": "/home/xuehua/Target-Synthetic-Streamflow-Generator-monthly-dual-v1.0/nuozhadu_interval_inflow_difference (1).xlsx",
+  "input_sha256": "cbfaf03284c6fc88b5314c3ad7176717d3631236f44dccec0bc12debb6088789",
+  "input_sheet": "interval_inflow",
+  "historical_period": "1978-01 to 2008-12",
+  "station_columns": {
+    "xiaowan": "xiaowan_natural_inflow_m3s",
+    "nuozhadu_interval": "nuozhadu_interval_inflow_m3s"
+  },
+  "requested_mean_change_pct": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ]
+  ],
+  "requested_sd_change_pct": [
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0
+    ]
+  ],
+  "method": "Paired monthly historical resampling followed by regularized joint 24-dimensional log-correlation reconstruction in automatically rotated overlapping annual blocks and positive exact-moment calibration.",
+  "cascade_note": "The generator outputs Xiaowan natural inflow and Nuozhadu interval natural inflow only. During later dispatch, Nuozhadu actual inflow is Xiaowan outflow plus Nuozhadu interval inflow.",
+  "qc_passed": true
+}

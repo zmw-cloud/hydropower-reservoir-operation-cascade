@@ -1,0 +1,102 @@
+{
+  "candidate_id": "random_forest_01",
+  "model_type": "random_forest",
+  "hyperparameters": {
+    "max_depth": 16,
+    "max_features": 0.5,
+    "min_samples_leaf": 1,
+    "n_estimators": 200
+  },
+  "selection_metric": "reliability_target_then_generation",
+  "selection_direction": "reliability_constraint_then_maximize_generation",
+  "selection_value": 0.6520833333333333,
+  "selection_value_semantics": "maximum_validation_min_station_firm_power_reliability",
+  "reliability_target": 0.8,
+  "reliability_target_feasible": false,
+  "xiaowan_firm_power_reliability": 0.7895833333333333,
+  "nuozhadu_firm_power_reliability": 0.6520833333333333,
+  "min_station_firm_power_reliability": 0.6520833333333333,
+  "joint_firm_power_reliability": 0.6135416666666667,
+  "worst_segment_min_station_reliability": 0.6208333333333333,
+  "validation_cascade_generation_gwh": 3526308.8976659565,
+  "validation_failed_station_months": 536,
+  "firm_power_failure_penalty_gwh": 500.0,
+  "teacher_ddp_schedule": "/home/xuehua/Platform-for-cascade-hydropower-reservoir-operation-ISO-V6-002654/outputs/DDP/teachers/failure_penalty_500/ddp_p4_v1_train_400y_1m_interpolated_failure_count_v1.csv",
+  "teacher_sha256": "98904b6cbbb2916614af208569b04f0bcd2825aa7afcb1acb61a4e4f6d08636b",
+  "teacher_summary_sha256": "18e8956465bc15bec9f16cc7ef55c3f22a8894ecd847be78e97a71218284c19a",
+  "physics_config": "/home/xuehua/Platform-for-cascade-hydropower-reservoir-operation-ISO-V6-002654/configs/xiaowan_nuozhadu_v1.yaml",
+  "physics_config_sha256": "30c87bd37c9ff1c0dde9bd0648149747baaf724cefb0a043c81889e17e77b594",
+  "physical_simulator_source_sha256": "05808ee52f5bfa72605f68378550914ec16830fcce3116a4ecc5f1e433b52970",
+  "validation_initial_state_source": "first_validation_ddp_start_levels",
+  "validation_initial_levels_m": [
+    1223.0,
+    812.0
+  ],
+  "terminal_reference_levels_m": [
+    1240.0,
+    812.0
+  ],
+  "monthly_max_target_levels_m": [
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1240.0,
+      812.0
+    ]
+  ],
+  "split": {
+    "split_method": "ordered_complete_calendar_years",
+    "fit_year_count": 320,
+    "validation_year_count": 80,
+    "fit_first_year": 2009,
+    "fit_last_year": 2328,
+    "validation_first_year": 2329,
+    "validation_last_year": 2408,
+    "fit_months": 3840,
+    "validation_months": 960
+  },
+  "evaluation_data_used_for_selection": false,
+  "random_seed": 20260918
+}

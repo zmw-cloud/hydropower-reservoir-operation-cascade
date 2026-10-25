@@ -1,0 +1,12 @@
+{
+  "selection_rank": 1,
+  "teacher_failure_penalty_gwh": 500,
+  "candidate_id": "random_forest_01",
+  "xiaowan_reliability": 0.7895833333333333,
+  "nuozhadu_reliability": 0.6520833333333333,
+  "minimum_station_reliability": 0.6520833333333333,
+  "distance_to_80pct": 0.1479166666666667,
+  "joint_reliability": 0.6135416666666667,
+  "mean_annual_generation_gwh": 44078.86122082446,
+  "worst_20y_segment_min_reliability": 0.6208333333333333
+}

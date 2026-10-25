@@ -1,0 +1,29 @@
+physical_config: configs/xiaowan_nuozhadu_v1.yaml
+sdp:
+  water_level_step: 1.0
+  supported_water_level_steps:
+  - 1.0
+  - 2.0
+  n_inflow_classes: 10
+  expected_training_years: 400
+  probability_method: monthly_equal_width_empirical_frequency
+  source_dependence: independent_marginal_product
+  representative_inflow: interval_midpoint
+  information_set: month_levels_current_source_classes_one_step_perfect_forecast
+  forecast_horizon_months: 1
+  forecast_xiaowan_inflow: natural_inflow
+  forecast_nuozhadu_inflow: local_incremental_inflow
+  nuozhadu_total_inflow: local_incremental_inflow_plus_action_dependent_routed_xiaowan_release
+  firm_power_failure_penalty_gwh: 400.0
+  failure_definition: station_specific_monthly_power_below_firm_power
+  objective: generation_gwh_minus_penalty_gwh_per_failed_station_month
+  deficit_energy_role: diagnostic_only_not_in_sdp_objective
+  water_balance_tolerance_m3: 0.001
+  max_physics_batch_elements: 2000000
+  solver:
+    method: cyclic_relative_value_iteration
+    max_iterations: 400
+    tolerance_gwh: 1.0e-05
+    stable_policy_iterations: 2
+outputs:
+  root: outputs/xiaowan_nuozhadu

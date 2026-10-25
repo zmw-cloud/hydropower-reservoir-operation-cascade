@@ -1,0 +1,85 @@
+{
+  "method": "Continuous PPO",
+  "policy_distribution": "geometry_conditioned_autoregressive_squashed_gaussian",
+  "continuous_action_transform": "autoregressive_fraction_to_exact_physical_feasible_interval_v1",
+  "information_set": "month_levels_current_external_inflows_one_step_perfect_forecast",
+  "closed_loop_state_storage": "continuous_physical_storage",
+  "seed": 100,
+  "months": 4800,
+  "years": 400.0,
+  "total_cascade_generation_gwh": 17366712.864894103,
+  "mean_annual_cascade_generation_gwh": 43416.78216223526,
+  "total_penalized_objective_gwh": 5990712.864894101,
+  "mean_annual_penalized_objective_gwh": 14976.782162235255,
+  "firm_power_failure_penalty_gwh": 6000.0,
+  "total_failure_penalty_gwh": 11376000.0,
+  "failed_station_months": 1896,
+  "firm_power_reliability": {
+    "xiaowan": 0.8222916666666666,
+    "nuozhadu": 0.7827083333333333,
+    "cascade": 0.7545833333333334
+  },
+  "mean_action_fraction": {
+    "xiaowan": 0.610950147404025,
+    "nuozhadu": 0.9193137205516299
+  },
+  "mean_feasible_interval_width_m": {
+    "xiaowan": 55.23650874251289,
+    "nuozhadu": 42.17540757192833
+  },
+  "max_abs_water_balance_error_m3": 5.513429641723633e-06,
+  "water_balance_tolerance_m3": 0.001,
+  "water_balance_within_tolerance": true,
+  "normalization": {
+    "schema_version": 1,
+    "method": "componentwise_minmax",
+    "state_order": [
+      "month",
+      "xiaowan_level_m",
+      "nuozhadu_level_m",
+      "xiaowan_natural_inflow_m3s",
+      "nuozhadu_interval_inflow_m3s"
+    ],
+    "clip": true,
+    "lower": [
+      1.0,
+      1166.0,
+      765.0,
+      239.600218735,
+      69.2706087757
+    ],
+    "upper": [
+      12.0,
+      1240.0,
+      812.0,
+      5595.0805967163,
+      1554.9494012605
+    ]
+  },
+  "reward_scaling": {
+    "objective": "generation_gwh_minus_penalty_gwh_per_failed_station_month",
+    "scale_gwh": 7332.48,
+    "reference_days": 30.4,
+    "clip": null,
+    "firm_power_failure_penalty_gwh": 6000.0,
+    "continuous_action_transform": "autoregressive_fraction_to_exact_physical_feasible_interval_v1"
+  },
+  "training_inflow_sha256": "639c7bc990efa27ec3787f31a0e499eaa79fdba822fdc2a1f80d0d2cae33a337",
+  "trajectory_kind": "evaluation",
+  "trajectory_inflow_sha256": "1416f86efbd0d7faa41b1e2ecbf9650fef77a17530aa836b6f511d8b41c38264",
+  "trajectory_wall_time_seconds": 14.338411817327142,
+  "reservoir_physics_sha256": "1dd89973a10bf42cdddc6f795280f3f7d11e9039acfee3f7cbee5e4c4cec3be3",
+  "evaluation_inflow_sha256": "1416f86efbd0d7faa41b1e2ecbf9650fef77a17530aa836b6f511d8b41c38264",
+  "evaluation_wall_time_seconds": 14.338411817327142,
+  "mode": "final",
+  "experiment_id": "continuous_ppo_v16_geometry_conditioned_final_lambda6000",
+  "checkpoint": "/root/private_data/continuous_ppo_v16_workspace_20261012/Platform-for-cascade-hydropower-reservoir-operation-16.0.0/outputs/xiaowan_nuozhadu/continuous_ppo_v16_geometry_conditioned_final_lambda6000/experiments/continuous_ppo_v16_geometry_conditioned_final_lambda6000/seed_100/final/checkpoints/final.pt",
+  "checkpoint_role": "final",
+  "checkpoint_environment_steps": 720000,
+  "configuration": "/root/private_data/continuous_ppo_v16_workspace_20261012/Platform-for-cascade-hydropower-reservoir-operation-16.0.0/configs/continuous_ppo_v16_final_lambda6000.yaml",
+  "physical_configuration": "/root/private_data/continuous_ppo_v16_workspace_20261012/Platform-for-cascade-hydropower-reservoir-operation-16.0.0/configs/xiaowan_nuozhadu_v1.yaml",
+  "training_inflow_source": "data/xiaowan_nuozhadu/inflow/target_synthetic_monthly_dual_v1_20260903/joint/inflow_joint_monthly_train.csv",
+  "trajectory_source": "data/xiaowan_nuozhadu/inflow/target_synthetic_monthly_dual_v1_20260903/joint/inflow_joint_monthly_evaluation.csv",
+  "normalization_source": "frozen_training_checkpoint",
+  "normalization_updated_during_trajectory": false
+}

@@ -1,0 +1,17 @@
+{
+  "scope": "Recorded evidence, not a fabricated complete lockfile",
+  "single_iso_rf": {
+    "python": "3.10.21",
+    "numpy": "2.2.6",
+    "scikit-learn": "1.7.2"
+  },
+  "cascade_iso": {
+    "python": "3.11.16",
+    "numpy": "2.4.6",
+    "pandas": "3.0.6",
+    "scipy": "1.17.1",
+    "scikit-learn": "1.9.1"
+  },
+  "dqn_ppo_full_runtime_lock": "not_available_in_examined_metadata",
+  "model_loading": "Use matching sklearn version for each RF pickle; do not silently resave old models."
+}

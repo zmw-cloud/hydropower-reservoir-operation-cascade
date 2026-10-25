@@ -1,0 +1,10 @@
+{
+  "small_tests_passed": 5,
+  "stage_commands_validated": 12,
+  "source_files_byte_identical": 29,
+  "formal_training_executed": false,
+  "full_evaluation_executed": false,
+  "hydrology_generated": false,
+  "figures_rendered": false,
+  "original_manuscript_modified": false
+}

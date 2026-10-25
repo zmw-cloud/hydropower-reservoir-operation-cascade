@@ -1,0 +1,126 @@
+{
+  "schema_version": 4,
+  "method": "SDP",
+  "information_set": "month_levels_current_source_classes_one_step_perfect_forecast",
+  "action": "next_month_start_target_levels_m",
+  "probability_model": "independent_product_of_monthly_empirical_marginals",
+  "forecast_horizon_months": 1,
+  "current_inflow_observation": "class_known_before_action",
+  "next_month_inflow_treatment": "expectation_before_next_month_class_observation",
+  "inflow_class_sources": [
+    "xiaowan_natural_inflow",
+    "nuozhadu_interval_inflow"
+  ],
+  "class_numbering": "zero_based_0_to_9",
+  "n_inflow_classes": 10,
+  "water_level_step_m": 1.0,
+  "state_level_grid_step_m": 1.0,
+  "candidate_target_level_action_step_m": 1.0,
+  "state_grid_shape": [
+    75,
+    48,
+    10,
+    10
+  ],
+  "action_table_shape": [
+    12,
+    75,
+    48,
+    10,
+    10
+  ],
+  "joint_action_count": 3600,
+  "training_inflow_sha256": "639c7bc990efa27ec3787f31a0e499eaa79fdba822fdc2a1f80d0d2cae33a337",
+  "reservoir_physics_sha256": "1dd89973a10bf42cdddc6f795280f3f7d11e9039acfee3f7cbee5e4c4cec3be3",
+  "training_expected_years": 400,
+  "training_stage_duration": "mean_calendar_days_for_each_month_over_training_period",
+  "firm_power_failure_penalty_gwh": 400.0,
+  "failure_definition": "station_specific_monthly_power_strictly_below_firm_power",
+  "objective_definition": "generation_energy_gwh_minus_gwh_equivalent_penalty_per_failed_station_month",
+  "deficit_energy_role": "diagnostic_only_not_in_sdp_objective",
+  "monthly_max_target_levels_m": [
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1236.0,
+      804.0
+    ],
+    [
+      1240.0,
+      812.0
+    ],
+    [
+      1240.0,
+      812.0
+    ]
+  ],
+  "monthly_max_semantics": "applies_to_end_of_month_target_level",
+  "flood_limit_action_months": [
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "solver": "cyclic_relative_value_iteration",
+  "solver_variant": "bilinear_continuation",
+  "continuation_value_lookup": "bilinear_interpolation_at_continuous_end_storage",
+  "policy_state_lookup": "nearest_level_indices_for_discrete_policy_table_only",
+  "physical_state_propagation": "continuous_storage_without_grid_projection",
+  "converged": true,
+  "iterations": 6,
+  "relative_value_residual_gwh": 4.452886059880257e-09,
+  "relative_value_residual_within_tolerance": true,
+  "stable_policy_passes": 2,
+  "annual_gain_anchor_gwh": 44303.24542031972,
+  "bellman_state_action_scenario_evaluations": 83462400000,
+  "max_abs_training_water_balance_error_m3": 1.52587890625e-05,
+  "water_balance_tolerance_m3": 0.001,
+  "max_physics_batch_elements": 2000000,
+  "training_water_balance_within_tolerance": true,
+  "sdp_configuration": "xiaowan_nuozhadu_sdp.yaml",
+  "sdp_configuration_sha256": "123b27e6e663dc7a34485905662cb0afff104942df7c3f5c42ae44f336906075",
+  "physical_configuration": "xiaowan_nuozhadu_v1.yaml",
+  "physical_configuration_sha256": "0d35e3bdf229b14eda57419805a47b414bdba69506f9c8e4b23226c2d1d04b75",
+  "training_inflow_source": "data/xiaowan_nuozhadu/inflow/target_synthetic_monthly_dual_v1_20260903/joint/inflow_joint_monthly_train.csv",
+  "configuration": "xiaowan_nuozhadu_sdp.yaml",
+  "configuration_sha256": "123b27e6e663dc7a34485905662cb0afff104942df7c3f5c42ae44f336906075",
+  "probability_directory": "/home/xuehua/Platform-for-cascade-hydropower-reservoir-operation-6.0.0-SDP/outputs/xiaowan_nuozhadu/train/sdp/1m/bilinear_continuation/probabilities",
+  "policy_archive": "/home/xuehua/Platform-for-cascade-hydropower-reservoir-operation-6.0.0-SDP/outputs/xiaowan_nuozhadu/train/sdp/1m/bilinear_continuation/policy/failure_penalty_400/sdp_p4_v4_one_step_forecast_bilinear_continuation_train_400y_1m_failure_count_penalty_400.npz",
+  "five_state_policy_table": null
+}
