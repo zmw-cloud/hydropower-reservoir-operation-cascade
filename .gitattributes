@@ -1,0 +1,2 @@
+# Preserve exact bytes: frozen manifests and model metadata use SHA-256.
+* -text

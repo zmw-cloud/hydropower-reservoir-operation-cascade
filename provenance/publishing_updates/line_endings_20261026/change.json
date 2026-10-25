@@ -1,0 +1,128 @@
+{
+  "date": "2026-10-26",
+  "scope": "Preserve exact frozen file bytes through Git add, commit and checkout.",
+  "previous_commit": "882c5256502a2bd7977ce4289f59ef0f427832c5",
+  "previous_release_manifest_sha256": "87de7a8c7f4d4058d760047c9867b66554c483e4813c853040ac1fc1508cda5c",
+  "previous_release_manifest": "release_manifest.before.json",
+  "attributes_rule": "* -text",
+  "reason": "core.autocrlf=true normalized mixed original line endings on add and changed text line endings on checkout, invalidating byte-based release and SDP probability checksums.",
+  "existing_frozen_entries_preserved": 290,
+  "previous_git_blobs_with_line_endings_changed": 22,
+  "restored_blob_entries": [
+    {
+      "path": "configs/xiaowan_nuozhadu_sdp.yaml",
+      "frozen_sha256": "4ec3d211ee7605030d2f64bf2b70691d3c5887a03f1c4aeacdfc8cfe53ed1515",
+      "previous_git_blob_sha256": "46bc957101473fb711bbf313d3584bc02927b89291462eb87ede7dcbb15f6fe1"
+    },
+    {
+      "path": "configs/xiaowan_nuozhadu_v1.yaml",
+      "frozen_sha256": "30c87bd37c9ff1c0dde9bd0648149747baaf724cefb0a043c81889e17e77b594",
+      "previous_git_blob_sha256": "4f0928332bda6dc03b91242e9899b7c301da52d3277235a6dbd9d4dedc1ea6e4"
+    },
+    {
+      "path": "data/datasets_manifest.json",
+      "frozen_sha256": "6b00414e6bfc14c255fbf6eda2758ec2d67521ed9a6ce438046e06eb4f7f5d0d",
+      "previous_git_blob_sha256": "4819009d87423976d8fa3eda38a680da33a8de0d6966f4c29812be10e17de869"
+    },
+    {
+      "path": "data/xiaowan_nuozhadu/reservoir_1/level_storage_curve.csv",
+      "frozen_sha256": "335e8484bfb8aa9ca9b109c8fe722fd98e1777ea739e7958b4766d6d278c50df",
+      "previous_git_blob_sha256": "c75b6209c7629c75e94628b9c8a073ceb68b8f981abd98c5ec1b20aa10e2c254"
+    },
+    {
+      "path": "data/xiaowan_nuozhadu/reservoir_1/tailwater_discharge_curve.csv",
+      "frozen_sha256": "91ec0c590399cfb80e22efd59a35446de3a301f079422c82748a57ec19c6fd7d",
+      "previous_git_blob_sha256": "b7646bfe630980508bf7a445456840e694362cde62e2f11ab986ef85ef71f331"
+    },
+    {
+      "path": "data/xiaowan_nuozhadu/reservoir_2/level_storage_curve.csv",
+      "frozen_sha256": "f2556bab2fcd559301f4a9c0d082131f22822bf45b233d475950612dbb2e514c",
+      "previous_git_blob_sha256": "cd14ebe4a9d81f58e32f4c0ca3a31c02275893599d73414b1a8146723d06ae68"
+    },
+    {
+      "path": "data/xiaowan_nuozhadu/reservoir_2/tailwater_discharge_curve.csv",
+      "frozen_sha256": "04f2854543b65b1806abff5c8374ba7af3e85c8b70f4c31edb838c5e61dc700d",
+      "previous_git_blob_sha256": "147faa36a0a2bd08c35d5ad3267232c1cb7b7caac2a5f7a3cd726e63deb1d877"
+    },
+    {
+      "path": "docs/INTEGRATION_REPORT.md",
+      "frozen_sha256": "69f8eb0dfd928e6fcb01a182899e9d0343cc2322e66cb6364370d05423838419",
+      "previous_git_blob_sha256": "31816e2dcb0daa1f9b96714f1b22c14612daf17dd14734cddf905dd2c1b3bb72"
+    },
+    {
+      "path": "docs/SI_SOURCE_MAP.md",
+      "frozen_sha256": "53b656342844cb5b3da8f8abaff0e8eb25fb17994843240e983b7f8bf78b05cc",
+      "previous_git_blob_sha256": "a01e1a5275f9ec73a3a4d09ef76a94f7b2f0a92f563e0fa6e51f1cd9f3afee15"
+    },
+    {
+      "path": "environments/integration_validation_versions.json",
+      "frozen_sha256": "019438e80d01e9e61309377cae05302333e95149f15d82667cce2bf8ed56699e",
+      "previous_git_blob_sha256": "570d3e650a628304c3cd9762f836683de8d155673929ddd52a8e177b7411c4bc"
+    },
+    {
+      "path": "environments/rl_inspection_versions.json",
+      "frozen_sha256": "6a35b3b5c739ee0c112f82e5958016bf6b7fd65405e7129ac8ca5bc520bd57d2",
+      "previous_git_blob_sha256": "c4ee1b1f5e88431dc687dba41991d41d7d0fef4bc8322c543cd451eaf6fc3ff8"
+    },
+    {
+      "path": "hydrology/figures/plot_figure2_hydrology_v2.py",
+      "frozen_sha256": "2ee7ec26baeecda907db9e3b99d3c0c7fd0e3326fc6574e2a963ba597e9b4c2b",
+      "previous_git_blob_sha256": "2dfb8efc8271ab1a05303373451e50c64d9f1dd2e899ab86c608606ab088746c"
+    },
+    {
+      "path": "provenance/integration_changes.json",
+      "frozen_sha256": "a0e66d00105e7ed83041433f4ee86784ba3b9e520ae9d78d2923baa9ca38e680",
+      "previous_git_blob_sha256": "49c4a91f03c924c58e118aecabc02156cbb2436d7c07f5757f92b8bebf3baa99"
+    },
+    {
+      "path": "provenance/source_manifest.json",
+      "frozen_sha256": "9840527a2944e13fda596ada734eb8331246775f9b888f158096b25f2534851b",
+      "previous_git_blob_sha256": "d243db376691a70084493acc3c814c676dfa5483876ed4cd7430e968ede4ee6b"
+    },
+    {
+      "path": "provenance/verification_summary.json",
+      "frozen_sha256": "2627d2de5a8b2dc7d117a69fe7b700c11d116a2366bb3cb410909c8ea033b263",
+      "previous_git_blob_sha256": "419c17e8ef23909f7e1fd5edd08f0dbe3364a5b7b58ec280153f184e24f991e8"
+    },
+    {
+      "path": "reference_results/single/inputs/32b6bd6f4de7/selected_performance_points.csv",
+      "frozen_sha256": "08c945fe052ef65f4dc4705f679ac5457f6d3635492512d413aa29a82f47934f",
+      "previous_git_blob_sha256": "829288f6c8e694a886d29e076500a438bb2f8e52d45d73d03a46f11ff96af7c5"
+    },
+    {
+      "path": "src/cascade_reservoir_benchmark/dqn_adapter.py",
+      "frozen_sha256": "8cf29e60e4f2425f5b6b0b84ad89b8d5caca1f2c013f6b212dc03c6c9221a956",
+      "previous_git_blob_sha256": "0d7fbbf68972acb3bf7dbe89edda20fe3842d50ba8847a504f6a301d559a13fa"
+    },
+    {
+      "path": "src/cascade_reservoir_benchmark/dqn_agent.py",
+      "frozen_sha256": "d62064a5f2ac13d8528f5b82f69f4dae5930d6d94ab9d6d85618bfa34023face",
+      "previous_git_blob_sha256": "bbf832906056c912b34559dd3673e3b2052a0d62d4256b52be2aa913935e7bc8"
+    },
+    {
+      "path": "src/cascade_reservoir_benchmark/dqn_evaluation.py",
+      "frozen_sha256": "38eab912391e369a1fd7c7ad54009a597a96d9b7f3379c8e4c40c9117f761c97",
+      "previous_git_blob_sha256": "8910d5c0e5b095cde9174b2210bb6abe124ed956e224b084871b2a839388e31c"
+    },
+    {
+      "path": "src/cascade_reservoir_benchmark/ppo_agent.py",
+      "frozen_sha256": "b310eccf15d867c68e91b20814038ebbe1638a82a003c6cf1f8d7f641cfe7ff2",
+      "previous_git_blob_sha256": "b693ba1cd44e3261c3649064d98f72a077dc2df5eae91ed066e7c0879f074e57"
+    },
+    {
+      "path": "src/cascade_reservoir_benchmark/ppo_evaluation.py",
+      "frozen_sha256": "fb788894072a3eb87872581b2344308aa9b1494c8dea7596aac2d9ed11ca8894",
+      "previous_git_blob_sha256": "d9e8b00793d83d6976d78da00591f361a232fd34f20e9d487f449f29f86fdaab"
+    },
+    {
+      "path": "provenance/documentation_updates/readme_sources_20261025/release_manifest.before.json",
+      "frozen_sha256": "37af559c50273001e7a8da2f0cab3f9971311d451786015d527deba1fa84fd04",
+      "previous_git_blob_sha256": "9d0d986a31c464babad5631636ca231b75555a83dbbd21ae559ec7b5c7a00178"
+    }
+  ],
+  "source_file_bytes_changed": false,
+  "algorithm_configuration_data_model_result_changes": false,
+  "release_manifest_change": "Append only .gitattributes and this provenance archive. Preserve every pre-existing entry and checksum.",
+  "git_history_rewritten": false,
+  "remote_push_performed_by_this_repair": false
+}

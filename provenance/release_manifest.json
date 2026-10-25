@@ -1158,5 +1158,17 @@
   "provenance/documentation_updates/readme_sources_20261025/change.json": {
     "sha256": "44f77586137ae59f5002050910a1270843e9b1fbd8b07a3b9750708eb075d225",
     "bytes": 764
+  },
+  ".gitattributes": {
+    "sha256": "907115102c07ffd201a2f8cbedea5417b7d8113f9851707c0f238b08e2d63f07",
+    "bytes": 81
+  },
+  "provenance/publishing_updates/line_endings_20261026/release_manifest.before.json": {
+    "sha256": "87de7a8c7f4d4058d760047c9867b66554c483e4813c853040ac1fc1508cda5c",
+    "bytes": 57214
+  },
+  "provenance/publishing_updates/line_endings_20261026/change.json": {
+    "sha256": "17fadae3c0468283913108c180060a914a2c24182108105b355ac29e13abdcd4",
+    "bytes": 6929
   }
 }
