@@ -1,7 +1,7 @@
 """Figure 2: original data/statistics with an updated publication layout.
 
 Dependencies: numpy>=1.22, pandas, matplotlib>=3.6, openpyxl.
-Bundled inputs require no path edits. Outputs: ./figure2_outputs beside this script.
+Bundled inputs require no path edits. Outputs: repository outputs/hydrology_figures/.
 HIST interval inflow = Nuozhadu natural inflow - Xiaowan natural inflow.
 Statistics: sample SD (ddof=1), linearly interpolated percentiles,
 and Pearson correlation of paired flows within each calendar month.
@@ -24,9 +24,10 @@ from matplotlib.colors import to_rgb, to_rgba
 # Paths are relative to this script, independent of the terminal directory.
 BASE_DIR = Path(__file__).resolve().parent
 HIST_FILE = BASE_DIR / "input/historical_monthly_inflow.xlsx"
-TRAIN_FILE = BASE_DIR / "input/inflow_joint_monthly_train.csv"
-EVAL_FILE = BASE_DIR / "input/inflow_joint_monthly_evaluation.csv"
-OUTPUT_DIR = BASE_DIR / "figure2_outputs"
+JOINT_DIR = BASE_DIR.parents[1] / "data/xiaowan_nuozhadu/inflow/target_synthetic_monthly_dual_v1_20260903/joint"
+TRAIN_FILE = JOINT_DIR / "inflow_joint_monthly_train.csv"
+EVAL_FILE = JOINT_DIR / "inflow_joint_monthly_evaluation.csv"
+OUTPUT_DIR = BASE_DIR.parents[1] / "outputs/hydrology_figures"
 SUMMARY_FILE = OUTPUT_DIR / "Figure2_hydrology_validation_summary.csv"
 STEM = "Figure2_hydrology_validation_v2"
 FLOW_COLS = ["xiaowan_natural_inflow_m3s", "nuozhadu_interval_inflow_m3s"]

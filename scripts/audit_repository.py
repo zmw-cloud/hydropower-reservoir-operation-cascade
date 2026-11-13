@@ -1,4 +1,4 @@
-"""Check immutable release inputs and recorded trajectories; never run a model."""
+"""Check reproduction inputs; optionally audit locally generated paper results."""
 from __future__ import annotations
 import argparse
 import calendar
@@ -40,13 +40,17 @@ def official_rates(d, single):
         return [float(d[s + "_firm_power_reliability"]) * 100 for s in ("xiaowan", "nuozhadu")]
     return [(1 - float(d[s + "_failed_months"]) / 4800) * 100 for s in ("xiaowan", "nuozhadu")]
 
-def audit(check_hashes=True, plots=False):
-    manifest = read_json(ROOT / "provenance/release_manifest.json")
+def audit(check_hashes=True, plots=False, results=False):
+    datasets = read_json(ROOT / "data/datasets_manifest.json")
+    manifest = {item["path"]: item for item in datasets["datasets"]}
     if check_hashes:
         for name, expected in manifest.items():
             b = native(ROOT / name).read_bytes()
             if hashlib.sha256(b).hexdigest() != expected["sha256"]:
-                raise ValueError("Release file changed: " + name)
+                raise ValueError("Input dataset changed: " + name)
+    if not results and not plots:
+        return {"status": "PASS", "input_files_checked": len(manifest) if check_hashes else 0,
+                "models_executed": False, "figures_generated": False}
     config = read_json(ROOT / "configs/paper/reference_results.json")
     per_seed, aggregate, baselines = [], [], {}
     for rec in config["records"]:
@@ -115,16 +119,20 @@ def audit(check_hashes=True, plots=False):
         assert len(summary) == 108
         registry = read_json(ROOT / "configs/paper/figure_registry.json")
         assert len(registry["figures"]) == 8
-    return {"status": "PASS", "release_files_checked": len(manifest) if check_hashes else 0,
+    return {"status": "PASS", "input_files_checked": len(manifest) if check_hashes else 0,
             "evaluation_trajectories": len(per_seed), "per_seed": per_seed, "representatives": aggregate,
             "plot_inputs_checked": plots, "models_executed": False, "figures_generated": False}
 
 def main():
     p = argparse.ArgumentParser(description=__doc__)
+    p.add_argument("--results", action="store_true", help="Audit generated results using configs/paper/reference_results.json")
     p.add_argument("--plots", action="store_true", help="Check requested figure data only; do not render")
     p.add_argument("--report", type=Path, help="Write a NEW JSON under outputs/, using exclusive creation")
     args = p.parse_args()
-    result = audit(plots=args.plots)
+    try:
+        result = audit(plots=args.plots, results=args.results)
+    except FileNotFoundError as error:
+        p.exit(1, f"Missing input: {error.filename}. Generate results first and configure their paths; see docs/REPRODUCTION.md.\n")
     if args.report:
         target = args.report.absolute()
         if not target.is_relative_to((ROOT / "outputs").absolute()):

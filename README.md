@@ -1,17 +1,47 @@
 # Cascade reservoir paper benchmark
 
-本仓库整合论文双库正式实验：DDP200、SDP400、ISO-RF500、动作条件Double DQN5000、V16几何条件连续PPO6000。只有TRAIN与EVAL，无dry/wet正式情景。
+论文月尺度水电调度复现代码，包含 DDP200、SDP400、ISO-RF500、Double DQN5000、连续 PPO6000。正式数据划分为 TRAIN / 独立 EVAL。
 
-DDP、SDP、ISO、DQN及物理源码采用V11；连续PPO采用V16；正式图的数据读取和统计采用经过审查的V6版本。原始目录和结果均未覆盖。
+仓库保留源码、README、复现说明、实验配置、必要输入数据、依赖声明、许可证和测试源码。训练模型、教师轨迹、验证扫描、评价结果、日志、图件及整合过程备份均由本地运行生成，不随源码提交。
 
-## Code and Data Sources（代码与数据来源）
+## 安装与输入检查
 
-### 代码与既有实验结果
+在仓库根目录使用 Python 3.10+：
 
-- DDP、SDP、ISO、动作条件 Double DQN 及公共物理模型采用 `Platform-for-cascade-hydropower-reservoir-operation-11.0.0`；连续动作 PPO 采用 `Platform-for-cascade-hydropower-reservoir-operation-16.0.0` 的 `continuous_ppo_*` 实现。
-- 正式模型、配置和评价结果来自 `Platform-for-cascade-hydropower-reservoir-operation-6.0.0` 中保存的实际结果包。比较统计与绘图依赖采用经审查的 V6/V16 对应实现；绘图代码的存放版本不代表模型的训练源码版本。
-- 径流统计图复用了 V16 原绘图入口使用的 `Figure2_Jupyter_bundle`。该资料包原存放于单库 3.0.0 目录，本仓库已将其脚本和三个输入文件本地化到 `hydrology/figures/`；没有以该旧目录中的调度算法替代正式算法。
-- 逐文件来源和 SHA-256 见 [来源清单](provenance/source_manifest.json)，路径及入口适配见 [整合变更记录](provenance/integration_changes.json)。代码许可证见 [LICENSE](LICENSE)。
+```bash
+python -m pip install -e ".[all]"
+python -B scripts/audit_repository.py
+python -B scripts/run_workflow.py inspect
+python -B -m unittest discover -s tests -v
+```
+
+输入检查只验证正式径流文件及其 SHA-256，不加载模型、不训练、不评价。
+
+## 复现
+
+先生成策略，再评价；运行结果保存在已被 Git 忽略的 `outputs/`。以下以 SDP 为例：
+
+```bash
+python -B scripts/run_workflow.py run --algorithm sdp --stage train
+python -B scripts/run_workflow.py run --algorithm sdp --stage evaluate
+```
+
+完整阶段顺序、其他算法命令和绘图输入配置见 [复现说明](docs/REPRODUCTION.md)。命令附加 `--show-commands` 可只查看具体入口。初次克隆不包含预训练模型，不能跳过训练直接评价。
+
+## 仓库结构
+
+- `src/`：算法与公共物理模型。
+- `scripts/`：运行、输入检查及绘图入口。
+- `data/`：正式径流、工程曲线及必要配置。
+- `configs/`：论文参数、扫描设置与结果路径模板。
+- `tests/`：测试源码，不含测试产物。
+- `environments/`：依赖要求及已知历史版本说明。
+- `docs/REPRODUCTION.md`：复现步骤与协议边界。
+- `hydrology/`：径流生成器、历史输入及径流图所需输入。
+
+## 代码与数据来源
+
+DDP、SDP、ISO、Double DQN 和物理模型采用梯级 V11 实现；连续 PPO 采用 V16 实现。绘图与统计采用原经审查的 V6/V16 对应实现。 代码许可证见 [LICENSE](LICENSE)。
 
 ### 工程参数与曲线
 
@@ -26,63 +56,13 @@ DDP、SDP、ISO、DQN及物理源码采用V11；连续PPO采用V16；正式图�
 - 正式联合输入见 [joint 目录](data/xiaowan_nuozhadu/inflow/target_synthetic_monthly_dual_v1_20260903/joint/)，包含上游天然入流与下游区间入流，单位为 m³/s。它们是合成序列，不是 400 年实测历史记录；正式实验只有 TRAIN/EVAL，不采用 dry/wet 情景。
 - 生成器、模型和图件的文件来源分别记录于来源清单。部分工程资料和原始历史径流的上游出处与独立使用条款，现有归档尚未完整记录。
 
-详细复现步骤及实验协议边界见 [REPRODUCTION.md](docs/REPRODUCTION.md)。当前文件核验使用 [发布清单](provenance/release_manifest.json)；本次 README 更新前的文档和清单原件保存在 [文档变更归档](provenance/documentation_updates/readme_sources_20261025/change.json)。
 
-## 核验与安装
+## 复现边界
 
-~~~text
-python -m pip install -r environments/requirements-plots.txt
-python -B scripts/audit_repository.py
-python -B scripts/audit_repository.py --plots
-python -B scripts/run_workflow.py inspect
-python -B -m unittest discover -s tests -p test_integration.py -v
-~~~
+完整历史训练环境锁文件尚不齐全，已记录版本见 `environments/historical_versions.json`。重新训练所得结果可能受软件版本、随机性和硬件影响，不保证逐位一致。
 
---plots只检查此前要求的图的数据和统计输入，不绘图、不执行策略。
+双库 ISO 保留既有实验协议：先生成 400 年教师，再切分 320/80 年用于拟合与验证；验证初值来自全期教师，因此不声称教师信息严格隔离。独立 EVAL 与 TRAIN 分离。所提供 ISO 配置为固定 RF 参数的代表实验，不等同于完整历史超参数搜索。
 
-| 方法 | λ | 年均发电量 TWh/yr | X保证率 % | N保证率 % |
-|---|---:|---:|---:|---:|
-| DDP | 200 | 45.810842 | 90.750000 | 82.270833 |
-| SDP | 400 | 44.425634 | 84.875000 | 79.979167 |
-| ISO-RF | 500 | 44.407936 | 79.729167 | 63.645833 |
-| DQN | 5000 | 44.156822 | 79.020833 | 76.402778 |
-| PPO | 6000 | 43.614492 | 81.305556 | 78.020833 |
+## 结果管理
 
-DQN/PPO为种子1、42、100均值。逐站均值的最小值、逐种子最小值的均值、两站同时达标率、总功率达标率分别保存定义，不混用。
-
-## 正式绘图
-
-只纳入此前要求重画/新增的图：历史与合成径流、双库权衡、功率持续、水位、弃水、DQN–PPO调整、小提琴和性能迁移。单库曲线绘图不纳入。
-
-~~~text
-python -B scripts/plot_final_figures.py --check-only
-python -B scripts/plot_final_figures.py --figures all
-~~~
-
-第二条才生成图片，每次写入新的outputs目录。需要Times New Roman，可使用系统字体或--font-dir指定本地字体目录；不复制系统商业字体到仓库。
-
-当前正文图号登记在configs/paper/figure_registry.json，兼容原绘图函数的旧参数编号。年度小提琴/迁移图需要的单库正式结果已在本仓库独立保留，不依赖另一个仓库。
-
-## 独立评价
-
-~~~text
-python -B scripts/run_workflow.py prepare --algorithm ppo --stage evaluate
-python -B scripts/run_workflow.py execute outputs/runs/上一步生成的目录名
-~~~
-
-prepare只复制输入和固定模型；execute才运行。可用方法为sdp、iso、dqn、ppo，DDP使用solve。原算法在新的工作副本中执行，结果不会写回artifacts或reference_results。
-
-正式算法需另行安装项目依赖：python -m pip install -e ".[all]"。冻结RF评价须匹配保存的scikit-learn1.9.1，入口在模型执行前检查版本。DQN/PPO使用各自原网络与检查点，不通过RF环境要求推断它们的历史完整环境。
-
-## 数据与历史记录
-
-- data：两站工程曲线和正式TRAIN/EVAL联合径流。
-- artifacts：固定策略、权重、模型元数据及教师。
-- reference_results：正式评价及绘图所需验证扫描。
-- hydrology：已使用的生成器源码、仅TRAIN/EVAL配置及自包含径流图输入；本次未重新生成径流。
-- provenance：源码档案、原配置、来源与整合差异。
-- docs：复现步骤、SI依据和明确局限。
-
-ISO仍保留既有400年教师后切320/80的实验，不重算成另一个实验。1223/812m验证初值合法，但来自全期教师；因此不声称教师信息严格隔离。独立EVAL数据与TRAIN是分离的。
-
-双库RF原模型记录sklearn1.9.1，完整DQN/PPO训练环境锁文件尚不完整，详见environments/historical_versions.json。该事实不通过猜测补齐。
+结果与模型保留在 `outputs/`；`.gitignore` 同时排除模型权重、缓存、日志及旧结果归档目录。输入数据和实验配置需要纳入版本控制，因此不按 CSV、Excel 或 JSON 扩展名一律忽略。

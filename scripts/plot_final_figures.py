@@ -21,8 +21,11 @@ def main():
     p.add_argument("--font-dir", type=Path)
     args = p.parse_args()
     from audit_repository import audit
-    result = audit(plots=True)
-    print(f"FROZEN_INPUT_CHECKS={result['status']}")
+    try:
+        result = audit(plots=True)
+    except FileNotFoundError as error:
+        p.exit(1, f"Missing plotting input: {error.filename}. Generate results and configure input paths; see docs/REPRODUCTION.md.\n")
+    print(f"PLOT_INPUT_CHECKS={result['status']}")
     if args.check_only:
         return
     if not args.figures:

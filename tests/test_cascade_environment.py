@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import unittest
+import shutil
+from unittest.mock import patch
 from dataclasses import replace
 from pathlib import Path
 from tempfile import TemporaryDirectory
@@ -161,7 +163,16 @@ class CascadeEnvironmentTests(unittest.TestCase):
     def test_project_config_and_observed_inflows_load_without_future_leakage(self) -> None:
         root = Path(__file__).resolve().parents[1]
         reservoir_1, reservoir_2, config = load_specs_from_yaml(root / "configs" / "xiaowan_nuozhadu_v1.yaml")
-        joint = load_observed_joint_inflows(root / "data" / "xiaowan_nuozhadu")
+        # The historical workbook is bundled with hydrology, without a duplicate data/raw copy.
+        with TemporaryDirectory() as directory:
+            fixture = Path(directory)
+            (fixture / "raw").mkdir()
+            shutil.copyfile(root / "hydrology/figures/input/historical_monthly_inflow.xlsx",
+                            fixture / "raw/1-historical.xlsx")
+            # Explicitly close the legacy loader's ExcelFile on Windows.
+            with pd.ExcelFile(fixture / "raw/1-historical.xlsx") as book:
+                with patch("cascade_reservoir_benchmark.data.pd.ExcelFile", return_value=book):
+                    joint = load_observed_joint_inflows(fixture)
         self.assertEqual(len(joint), 372)
         self.assertEqual(list(joint.columns), ["date", "xiaowan_inflow_m3s", "nuozhadu_local_inflow_m3s"])
         self.assertTrue(config["data"]["local_inflow_experiment_ready"])

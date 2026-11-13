@@ -1,31 +1,49 @@
 """Small invariant and packaging checks; no formal training/evaluation."""
-import importlib.util
-import json
+import contextlib
+from io import StringIO
 from pathlib import Path
 import sys
 import unittest
+from unittest.mock import call, patch
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path[:0] = [str(ROOT / "scripts"), str(ROOT / "src")]
 
 class IntegrationTests(unittest.TestCase):
-    def test_recorded_results_and_units(self):
+    def test_input_datasets_match_their_hashes(self):
         import audit_repository
         result = audit_repository.audit()
         self.assertEqual(result["status"], "PASS")
-        iso = next(x for x in result["representatives"] if x["case"] == "Case 1" and x["method"] == "ISO-RF")
-        self.assertAlmostEqual(iso["station_rates_pct"][0], 81.97916666666667)
+        self.assertEqual(result["input_files_checked"], 2)
 
-    def test_formal_scope_and_bound_artifacts(self):
+    def test_formal_scope_and_commands(self):
         import run_workflow
         p = run_workflow.profile()
         self.assertEqual(p["formal_scenarios"], ["train", "evaluation"])
-        for b in p["bindings"]:
-            self.assertTrue(run_workflow.native(ROOT / b["source"]).is_file(), b)
-            self.assertFalse(Path(b["target"]).is_absolute())
-            self.assertNotIn("..", Path(b["target"]).parts)
+        for method, settings in p["methods"].items():
+            for stage in settings["stages"]:
+                for command in run_workflow.commands(p, method, stage):
+                    self.assertTrue((ROOT / command[0]).is_file(), command)
         with self.assertRaises(ValueError):
             run_workflow.commands(p, "dqn", "drought")
+
+    def test_run_dispatches_all_stage_commands_in_order(self):
+        import run_workflow
+        expected = run_workflow.commands(run_workflow.profile(), "sdp", "train")
+        with patch.object(sys, "argv", ["run_workflow.py", "run", "--algorithm", "sdp", "--stage", "train"]), \
+                patch.object(run_workflow.subprocess, "run") as run:
+            run_workflow.main()
+        self.assertEqual(run.call_args_list, [
+            call([sys.executable, "-B", str(ROOT / command[0]), *command[1:]], cwd=ROOT, check=True)
+            for command in expected])
+
+    def test_command_preview_never_executes(self):
+        import run_workflow
+        with patch.object(sys, "argv", ["run_workflow.py", "run", "--algorithm", "dqn", "--stage", "final", "--show-commands"]), \
+                patch.object(run_workflow.subprocess, "run") as run, contextlib.redirect_stdout(StringIO()) as output:
+            run_workflow.main()
+        run.assert_not_called()
+        self.assertIn("--lambda 650" if run_workflow.profile()["system"] == "single" else "configs/paper/dqn5000.yaml", output.getvalue())
 
     def test_paper_configurations_match_the_final_experiments(self):
         import yaml

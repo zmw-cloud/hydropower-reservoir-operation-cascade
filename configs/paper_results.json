@@ -1,7 +1,7 @@
 {
   "roots": {
-    "single": "reference_results/single",
-    "cascade": "reference_results/cascade"
+    "single": "outputs/paper_inputs/single",
+    "cascade": "outputs/paper_inputs/cascade"
   },
   "output_directory": "outputs/paper_results",
   "font_directory": "assets/fonts",

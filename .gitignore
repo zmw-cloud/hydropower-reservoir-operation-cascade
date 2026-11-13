@@ -1,7 +1,32 @@
+# Python caches and development tools
 __pycache__/
 *.py[cod]
 .pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
 *.egg-info/
-.venv/
-outputs/*
-!outputs/.gitkeep
+build/
+dist/
+.venv*/
+venv/
+env/
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Generated experiments, trained policies, reports, and local archives
+/outputs/
+/artifacts/
+/reference_results/
+/provenance/
+*.pt
+*.pth
+*.pkl
+*.joblib
+*.npz
+*.log
+docs/_build/
+docs_build/

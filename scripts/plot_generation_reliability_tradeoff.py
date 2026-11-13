@@ -38,11 +38,11 @@ COMPARISON_ROOT = OUTPUTS_ROOT / "comparison_ddp_sdp_iso_dqn_ppo_formal"
 FIGURES_DIR = COMPARISON_ROOT / "figures"
 TABLES_DIR = COMPARISON_ROOT / "tables"
 
-DDP_ROOT = PROJECT_ROOT / "reference_results/tradeoffs/DDP"
-SDP_ROOT = PROJECT_ROOT / "reference_results/tradeoffs/SDP"
-ISO_TEACHER_SWEEP_SUMMARY = PROJECT_ROOT / "reference_results/tradeoffs/iso_validation11.csv"
-DQN_VALIDATION_ARCHIVE = PROJECT_ROOT / "reference_results/tradeoffs/dqn_validation8.zip"
-PPO_SCAN_ROOT = PROJECT_ROOT / "reference_results/tradeoffs/ppo"
+DDP_ROOT = PROJECT_ROOT / "outputs/paper_inputs/tradeoffs/DDP"
+SDP_ROOT = PROJECT_ROOT / "outputs/paper_inputs/tradeoffs/SDP"
+ISO_TEACHER_SWEEP_SUMMARY = PROJECT_ROOT / "outputs/paper_inputs/tradeoffs/iso_validation11.csv"
+DQN_VALIDATION_ARCHIVE = PROJECT_ROOT / "outputs/paper_inputs/tradeoffs/dqn_validation8.zip"
+PPO_SCAN_ROOT = PROJECT_ROOT / "outputs/paper_inputs/tradeoffs/ppo"
 PPO_VALIDATION_SUMMARY = PPO_SCAN_ROOT / "continuous_ppo_v16_penalty_scan_validation/analysis/v16_penalty_scan_summary.csv"
 
 REFERENCE_RATES_PCT = (80.0, 90.0)

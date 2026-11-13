@@ -377,7 +377,7 @@ def collect(config: dict) -> dict:
         "reliability": "Strict monthly station power>=firm power, per-seed first, then seed mean. "
                        "Case2 scalar=min(two station mean rates), explicitly approved by user; not joint reliability.",
         "selection": "All penalties/checkpoints are frozen existing choices. No penalty sweep or model is run.",
-        "new_repository_vs_result_version": "Integrated repository contains local frozen result copies; original locations are recorded in provenance. "
+        "new_repository_vs_result_version": "Result paths are configured for locally generated data. "
                                              "PPO is pinned to confirmed final V16 geometry-conditioned6000 snapshots.",
         "figure_interpretation": "Arrows compare two problem instances at fixed representative points; "
                                  "they do not imply transfer-learning experiments or a causal treatment effect.",
